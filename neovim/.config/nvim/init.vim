@@ -1,0 +1,131 @@
+syntax enable
+
+set scrolloff=8
+set number
+set relativenumber
+set hidden
+set tabstop=4 softtabstop=4
+set colorcolumn=80
+set shiftwidth=4
+set expandtab
+set smartindent
+
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+
+" ------------------------------------------------
+" KEY MAPS
+" ------------------------------------------------
+
+let mapleader = " "
+
+nmap <leader>ve :edit ~/.config/nvim/init.vim<CR>
+nmap <leader>vr :source ~/.config/nvim/init.vim<CR>
+
+" save file
+nmap <leader>s :w<CR>
+
+" save and quit
+nmap <leader>wq :wq<CR>
+
+nnoremap <leader>pv :Vex<CR> 
+nnoremap <leader>pf :Files<CR>
+
+map gf :edit <cfile><CR>
+
+" ------------------------------------------------
+" PLUGINS 
+" ------------------------------------------------
+
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim''
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+" LSP plugins
+Plug 'neovim/nvim-lspconfig'
+Plug 'lukas-reineke/lsp-format.nvim'
+
+" Theme
+Plug 'ayu-theme/ayu-vim'
+Plug 'itchyny/lightline.vim'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'preservim/nerdtree'
+Plug 'preservim/nerdcommenter'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'vim-syntastic/syntastic'
+Plug 'mattn/emmet-vim'
+Plug 'glepnir/lspsaga.nvim'
+Plug 'wikitopian/hardmode'
+call plug#end()
+
+lua require('harleylara.init')
+
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=100}
+augroup END
+
+" ------------------------------------------------
+" COLOR SCHEME 
+" ------------------------------------------------
+
+set termguicolors     " enable true colors support
+let ayucolor="dark"  " for light version of theme
+colorscheme ayu
+highlight LineNr guibg=#000000
+highlight LineNr guifg=#565B66
+
+" ------------------------------------------------
+" NERDTree 
+" ------------------------------------------------
+
+let NERDTreeQuitOnOpen=1
+nmap <F2> :NERDTreeToggle<CR>
+
+" ------------------------------------------------
+" EMMET
+" ------------------------------------------------
+
+let g:user_emmet_mode='n'
+let g:user_emmet_leader_key=','
+
+" ------------------------------------------------
+" CoC NVIM
+" ------------------------------------------------
+
+let g:coc_global_extensions = [
+    \'coc-json',
+    \'coc-tsserver',
+    \'coc-html',
+    \'coc-css',
+    \'coc-pyright'
+    \]
+
+" ------------------------------------------------
+" CoC NVIM
+" ------------------------------------------------
+
+let g:HardMode_level = 'wannabe'
+autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
+
+" ------------------------------------------------
+" PYTHON
+" ------------------------------------------------
+
+au BufNewFile,BufRead *.py
+    \set tabstop=4
+    \set softtabstop=4
+    \set shiftwidth=4
+    \set textwidth=79
+    \set expandtab
+    \set autoindent
+    \set fileformat=unix
+    \set encoding=utf-8
