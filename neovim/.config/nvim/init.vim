@@ -21,8 +21,8 @@ set undofile
 
 let mapleader = " "
 
-nmap <leader>ve :edit ~/.config/nvim/init.vim<CR>
-nmap <leader>vr :source ~/.config/nvim/init.vim<CR>
+nmap <leader>ve :edit ~/dotfiles/neovim/.config/nvim/init.vim<CR>
+nmap <leader>vr :source ~/dotfiles/neovim/.config/nvim/init.vim<CR>
 
 " save file
 nmap <leader>s :w<CR>
@@ -97,8 +97,16 @@ Plug 'simrat39/rust-tools.nvim'
 
 call plug#end()
 
+
+" ------------------------------------------------
+" IMPORT LUA INIT
+" ------------------------------------------------
 lua require('harleylara.init')
 
+
+" ------------------------------------------------
+" YANK highlight setup
+" ------------------------------------------------
 augroup highlight_yank
     autocmd!
     au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=100}
@@ -107,7 +115,6 @@ augroup END
 " ------------------------------------------------
 " COLOR SCHEME 
 " ------------------------------------------------
-
 set termguicolors     " enable true colors support
 let ayucolor="dark"  " for light version of theme
 colorscheme ayu
@@ -117,40 +124,18 @@ highlight LineNr guifg=#565B66
 " ------------------------------------------------
 " NERDTree 
 " ------------------------------------------------
-
 let NERDTreeQuitOnOpen=1
-nmap <F2> :NERDTreeToggle<CR>
+nmap <leader>t :NERDTreeToggle<CR>
 
 " ------------------------------------------------
 " EMMET
 " ------------------------------------------------
-
 let g:user_emmet_mode='n'
 let g:user_emmet_leader_key=','
 
 " ------------------------------------------------
-" CoC NVIM
-" ------------------------------------------------
-
-let g:coc_global_extensions = [
-    \'coc-json',
-    \'coc-tsserver',
-    \'coc-html',
-    \'coc-css',
-    \'coc-pyright'
-    \]
-
-" ------------------------------------------------
-" CoC NVIM
-" ------------------------------------------------
-
-let g:HardMode_level = 'wannabe'
-autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
-
-" ------------------------------------------------
 " PYTHON
 " ------------------------------------------------
-
 au BufNewFile,BufRead *.py
     \set tabstop=4
     \set softtabstop=4
@@ -160,3 +145,10 @@ au BufNewFile,BufRead *.py
     \set autoindent
     \set fileformat=unix
     \set encoding=utf-8
+    \
+
+" ------------------------------------------------
+" HARDMODE
+" ------------------------------------------------
+let g:HardMode_level = 'wannabe'
+autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
