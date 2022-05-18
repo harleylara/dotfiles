@@ -46,24 +46,55 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-" LSP plugins
+" Language server for Neovim
 Plug 'neovim/nvim-lspconfig'
 Plug 'lukas-reineke/lsp-format.nvim'
+
+" Completion framework
+Plug 'hrsh7th/nvim-cmp'
+
+" LSP completion source for nvim-cmp
+Plug 'hrsh7th/cmp-nvim-lsp'
+
+" Snippet completion source for nvim-cmp
+Plug 'hrsh7th/cmp-vsnip'
+
+" Other usefull completion sources
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-buffer'
+
+" LuaSnip
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 
 " Theme
 Plug 'ayu-theme/ayu-vim'
 Plug 'itchyny/lightline.vim'
 
+" light-weight lsp UI
+Plug 'glepnir/lspsaga.nvim'
+
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdcommenter'
-Plug 'vim-scripts/indentpython.vim'
+
+" Python relate stuff
+" Plug 'vim-scripts/indentpython.vim'
+
+" Syntax checking hacks for vim
 Plug 'vim-syntastic/syntastic'
 Plug 'mattn/emmet-vim'
-Plug 'glepnir/lspsaga.nvim'
 Plug 'wikitopian/hardmode'
+
+" Vim config for Rust
+Plug 'rust-lang/rust.vim'
+
+" Rust set if tools, To enable more of the features of rust-analyzer, such as
+" inlay hints and more! 
+Plug 'simrat39/rust-tools.nvim'
+
 call plug#end()
 
 lua require('harleylara.init')
