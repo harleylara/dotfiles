@@ -1,3 +1,5 @@
+set nocompatible
+
 syntax enable
 
 set scrolloff=8
@@ -67,10 +69,6 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 
-" Theme
-Plug 'ayu-theme/ayu-vim'
-Plug 'itchyny/lightline.vim'
-
 " light-weight lsp UI
 Plug 'glepnir/lspsaga.nvim'
 
@@ -94,6 +92,11 @@ Plug 'rust-lang/rust.vim'
 " Rust set if tools, To enable more of the features of rust-analyzer, such as
 " inlay hints and more! 
 Plug 'simrat39/rust-tools.nvim'
+
+" Theme
+Plug 'ayu-theme/ayu-vim'
+" Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
