@@ -130,3 +130,5 @@ clear
 source /opt/ros/galactic/setup.bash
 echo "Galactic env. enable"
 neofetch
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
