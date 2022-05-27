@@ -12,4 +12,4 @@ addToPath() {
 addToPath $HOME/.local/bin
 
 bind '"\C-f":"tmux-sessionizer\n"'
-
+bind '"\C-h":"cht.sh\n"'
