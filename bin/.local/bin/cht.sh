@@ -1,14 +1,27 @@
 #!/bin/bash
 
-languages=$(echo "python javascript arduino c cpp" | tr " " "\n")
-core_utils=$(echo "find sed awk" | tr " " "\n")
+LANGUAGES=$(echo "python javascript arduino c cpp" | tr " " "\n")
+CORE_UTILS=$(echo "find sed awk" | tr " " "\n")
 
-selected=$(echo -e "$languages\n$core_utils" | fzf)
+SELECTED=$(echo -e "$LANGUAGES\n$CORE_UTILS" | fzf)
+PANE=$(echo "$TMUX_PANE" | sed "s/^.//")
 
-read -p "Query: " query
+echo "Pane number: $PANE"
 
-if echo "$languages" | grep -qs $selected; then
-    tmux split-window -h bash -c "curl cht.sh/$selected/$(echo "$query" | tr " " "+") | less -r"
+read -p "Query: " QUERY
+
+if [[ "$PANE" == 0 ]]; then
+    # single pane view running inside tmux
+    if echo "$LANGUAGES" | grep -qs $SELECTED; then
+        tmux split-window -h bash -c "curl cht.sh/$SELECTED/$(echo "$QUERY" | tr " " "+") | less -r"
+    else
+        tmux split-window -h bash -c "curl cht.sh/$SELECTED~$QUERY | less -r"
+    fi
 else
-    tmux split-window -h bash -c "curl cht.sh/$selected~$query | less -r"
+    # runing already multi pane view or running outside tmux
+    if echo "$LANGUAGES" | grep -qs $SELECTED; then
+        curl cht.sh/$SELECTED/$(echo "$QUERY" | tr " " "+") | less -r
+    else
+        curl cht.sh/$SELECTED~$QUERY | less -r
+    fi
 fi

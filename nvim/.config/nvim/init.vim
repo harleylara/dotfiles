@@ -37,6 +37,9 @@ nnoremap <leader>pf :Files<CR>
 
 map gf :edit <cfile><CR>
 
+" open cht.sh
+nnoremap <C-h> :silent !tmux split-window -h bash -c cht.sh<CR>
+
 " ------------------------------------------------
 " PLUGINS 
 " ------------------------------------------------
