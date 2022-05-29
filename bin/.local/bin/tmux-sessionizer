@@ -1,29 +1,25 @@
 #!/bin/bash
 
 if [[ $# -eq 1 ]]; then
-    selected=$1
+    SELECTED=$1 && [[ "$SELECTED" == '.' ]] && SELECTED="$PWD"
 else
-    selected=$(find ~/ /mnt/d/git-ws /mnt/c/Users/harle /mnt/c/Users/harle/Documents -mindepth 1 -maxdepth 1 -type d | fzf)
+    SELECTED=$(find ~/ /mnt/d/git-ws /mnt/c/Users/harle /mnt/c/Users/harle/Documents -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
-if [[ -z $selected ]]; then
+if [[ -z $SELECTED ]]; then
     exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
-tmux_running=$(pgrep tmux)
+SELECTED_NAME=$(basename "$SELECTED" | tr . _)
+SELECTED_NAME=${SELECTED_NAME:0:8}
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+if [[ -n $TMUX ]]; then
     # inside tmux
-    tmux new-session -s $selected_name -c $selected
-    exit 0
-else
+    tmux switch-client -t "$SELECTED_NAME" || \
+    tmux new-session -ds "$SELECTED_NAME" -c "$SELECTED" && \
+    tmux switch-client -t "$SELECTED_NAME"
+elif [[ -z $TMUX ]]; then
     # outside tmux
-    tmux new-session -As $selected_name -c $selected
+    tmux new-session -s "$SELECTED_NAME" -c "$SELECTED" || \
+    tmux attach -t "$SELECTED_NAME"
 fi
-
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c $selected
-fi
-
-tmux switch-client -t $selected_name
