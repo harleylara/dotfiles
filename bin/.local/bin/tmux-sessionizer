@@ -1,9 +1,11 @@
 #!/bin/bash
 
+DIRECTORIES=$(cat ~/.tmux-dirs | tr "\n" " ")
+
 if [[ $# -eq 1 ]]; then
     SELECTED=$1 && [[ "$SELECTED" == '.' ]] && SELECTED="$PWD"
 else
-    SELECTED=$(find ~/ /mnt/d/git-ws /mnt/c/Users/harle /mnt/c/Users/harle/Documents -mindepth 1 -maxdepth 1 -type d | fzf)
+    SELECTED=$(find $DIRECTORIES -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $SELECTED ]]; then
