@@ -1,7 +1,7 @@
 #!/bin/bash
 
 LANGUAGES=$(echo "python javascript arduino c cpp" | tr " " "\n")
-CORE_UTILS=$(echo "docker find sed awk" | tr " " "\n")
+CORE_UTILS=$(echo "git docker find sed awk" | tr " " "\n")
 
 SELECTED=$(echo -e "$LANGUAGES\n$CORE_UTILS" | fzf)
 PANE=$(echo "$TMUX_PANE" | sed "s/^.//")
