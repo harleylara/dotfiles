@@ -1,0 +1,13 @@
+#!/bin/bash
+
+DIRS=($(find . -mindepth 1 -maxdepth 1 -type d | sed 's/.\///'))
+
+for dir in "${DIRS[@]}"; do
+    if [[ $dir != ".git" ]]; then
+        echo "Unstowing $dir"
+        # this removed stderr from the known "bug" in https://github.com/aspiers/stow/issues/65
+        stow -D $dir 2> /dev/null
+    fi
+done
+
+echo "... Finished"
