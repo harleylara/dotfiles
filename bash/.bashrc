@@ -116,19 +116,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# ROS 1 Noetic ENV
-# source /opt/ros/noetic/setup.bash
-
-export LIBGL_ALWAYS_INDIRECT=0
-source /usr/share/colcon_cd/function/colcon_cd.sh
-export _colcon_cd_root=~/ros2_install
-source /usr/share/colcon_cd/function/colcon_cd.sh
-
-clear
-
-# ROS 2 Galactic ENV
-source /opt/ros/galactic/setup.bash
-echo "Galactic env. enable"
 neofetch
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
