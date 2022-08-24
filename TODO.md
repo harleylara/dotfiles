@@ -1,0 +1,1 @@
+- [ ] automate the process of removing files before stowing
