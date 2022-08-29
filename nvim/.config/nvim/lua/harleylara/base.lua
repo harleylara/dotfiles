@@ -1,36 +1,38 @@
+local opt = vim.opt
+
 vim.cmd("autocmd!")
 
 vim.scriptencoding = 'utf-8'
-vim.opt.encoding = 'utf-8'
-vim.opt.fileencoding = 'utf-8'
+opt.encoding = 'utf-8'
+opt.fileencoding = 'utf-8'
 
 vim.wo.number = true
 
 -- disable mouse
 
-vim.opt.title = true
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-vim.opt.relativenumber = true
-vim.opt.hlsearch = true
-vim.opt.backup = false
-vim.opt.showcmd = true
-vim.opt.cmdheight = 1
-vim.opt.laststatus = 2
-vim.opt.expandtab = true
-vim.opt.scrolloff = 8
-vim.opt.shell = 'bash'
-vim.opt.backupskip = { '/tmp/*', '/private/tmp/*' }
-vim.opt.inccommand = 'split'
-vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
-vim.opt.smarttab = true
-vim.opt.breakindent = true
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
-vim.opt.wrap = false -- No Wrap lines
-vim.opt.backspace = { 'start', 'eol', 'indent' }
-vim.opt.path:append { '**' } -- Finding files - Search down into subfolders
-vim.opt.wildignore:append { '*/node_modules/*' }
+opt.title = true
+opt.autoindent = true
+opt.smartindent = true
+opt.relativenumber = true
+opt.hlsearch = true
+opt.backup = false
+opt.showcmd = true
+opt.cmdheight = 1
+opt.laststatus = 2
+opt.expandtab = true
+opt.scrolloff = 8
+opt.shell = 'bash'
+opt.backupskip = { '/tmp/*', '/private/tmp/*' }
+opt.inccommand = 'split'
+opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
+opt.smarttab = true
+opt.breakindent = true
+opt.shiftwidth = 4
+opt.tabstop = 4
+opt.wrap = false -- No Wrap lines
+opt.backspace = { 'start', 'eol', 'indent' }
+opt.path:append { '**' } -- Finding files - Search down into subfolders
+opt.wildignore:append { '*/node_modules/*' }
 
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
@@ -43,4 +45,4 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 })
 
 -- Add asterisks in block comments
-vim.opt.formatoptions:append { 'r' }
+opt.formatoptions:append { 'r' }
