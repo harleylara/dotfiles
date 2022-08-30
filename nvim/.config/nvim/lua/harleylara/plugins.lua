@@ -28,7 +28,20 @@ packer.startup(function(use)
     -- Autocompletion
     use 'hrsh7th/nvim-cmp'
 
-    -- Snipe engine
+    -- Snip engine
     use 'L3MON4D3/LuaSnip'
+
+    -- Treesitter 
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+    }
+
+    -- Autopair and autotag
+    use 'windwp/nvim-autopairs'
+    use 'windwp/nvim-ts-autotag'
+
+    -- Fuzzy finder
+    use 'nvim-telescope/telescope.nvim'
 
 end)
