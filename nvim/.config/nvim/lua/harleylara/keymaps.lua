@@ -1,5 +1,8 @@
 local keymap = vim.keymap
 
+-- leader key
+vim.g.mapleader = " "
+
 -- prevents yank on delete "x"
 -- keymap.set("n", "x", "_x")
 
@@ -9,6 +12,9 @@ keymap.set("n", "<C-a>", "gg<S-v>G")
 -- move selection
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- easy replace
+keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
 -- new tab
 -- keymap.set('n', 'te', ':tabedit')
