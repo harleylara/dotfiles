@@ -16,7 +16,7 @@ packer.startup(function(use)
     use 'Shatur/neovim-ayu'
 
     -- Status line
-    use 'hoob3rt/lualine.nvim'
+    use 'nvim-lualine/lualine.nvim'
 
     -- LSP
     use 'neovim/nvim-lspconfig'
