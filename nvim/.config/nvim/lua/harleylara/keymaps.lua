@@ -1,10 +1,14 @@
 local keymap = vim.keymap
 
 -- prevents yank on delete "x"
-keymap.set("n", "x", "_x")
+-- keymap.set("n", "x", "_x")
 
 -- select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
+
+-- move selection
+keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- new tab
 -- keymap.set('n', 'te', ':tabedit')
