@@ -20,8 +20,8 @@ ts.setup {
         additional_vim_regex_highlighting = false,
     },
     indent = {
-        enable = true,
-        disable = {},
+        enable = false,
+        disable = {"python"},
     },
     ensure_installed = {
         'tsx',
