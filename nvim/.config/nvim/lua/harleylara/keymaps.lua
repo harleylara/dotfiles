@@ -30,7 +30,7 @@ localModule.search_dotfiles = function()
 end
 
 keymap.set('n', '<leader>ff', builtin.find_files, {})
-keymap.set('n', '<leader>fd', localModule.search_dotfiles)
+keymap.set('n', '<leader>fd', localModule.search_dotfiles, {})
 keymap.set('n', '<leader>fg', builtin.live_grep, {})
 keymap.set('n', '<leader>fb', ':Telescope file_browser<CR>')
 
