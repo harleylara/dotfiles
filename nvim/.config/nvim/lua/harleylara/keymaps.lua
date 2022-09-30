@@ -32,7 +32,8 @@ end
 keymap.set('n', '<leader>ff', builtin.find_files, {})
 keymap.set('n', '<leader>fd', localModule.search_dotfiles, {})
 keymap.set('n', '<leader>fg', builtin.live_grep, {})
-keymap.set('n', '<leader>fb', ':Telescope file_browser<CR>')
+keymap.set('n', '<c-f>', builtin.current_buffer_fuzzy_find, {})
+keymap.set('n', '<leader>fs', ':Telescope file_browser<CR>')
 
 -- new tab
 -- keymap.set('n', 'te', ':tabedit')
