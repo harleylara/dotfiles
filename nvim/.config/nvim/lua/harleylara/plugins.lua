@@ -48,5 +48,7 @@ packer.startup(function(use)
     -- or                            , branch = '0.1.x',
       requires = { {'nvim-lua/plenary.nvim'} }
     }
+    -- File broser extension
+    use { "nvim-telescope/telescope-file-browser.nvim" }
 
 end)
