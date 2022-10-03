@@ -1,5 +1,10 @@
 local keymap = vim.keymap
-local builtin = require('telescope.builtin')
+local status, telescope = pcall(require, "telescope.builtin")
+
+if (not status) then
+    print("Telescope is not installed keymap unset")
+    return
+end
 
 -- leader key
 vim.g.mapleader = " "
@@ -22,17 +27,17 @@ keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Lef
 local localModule = {}
 localModule.search_dotfiles = function()
     -- TODO: can specific directories be ignored. e.g. .git
-	builtin.find_files({
+	telescope.find_files({
 		prompt_title = "My Dotfiles",
 		cwd = vim.env.DOTFILES,
 		hidden = true,
 	})
 end
 
-keymap.set('n', '<leader>ff', builtin.find_files, {})
+keymap.set('n', '<leader>ff', telescope.find_files, {})
 keymap.set('n', '<leader>fd', localModule.search_dotfiles, {})
-keymap.set('n', '<leader>fg', builtin.live_grep, {})
-keymap.set('n', '<c-f>', builtin.current_buffer_fuzzy_find, {})
+keymap.set('n', '<leader>fg', telescope.live_grep, {})
+keymap.set('n', '<c-f>', telescope.current_buffer_fuzzy_find, {})
 keymap.set('n', '<leader>fs', ':Telescope file_browser<CR>')
 
 -- new tab
