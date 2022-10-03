@@ -11,7 +11,7 @@ vim.cmd [[packadd packer.nvim]]
 packer.startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
-    
+
     -- Color scheme
     use 'Shatur/neovim-ayu'
 
@@ -30,6 +30,7 @@ packer.startup(function(use)
 
     -- Snip engine
     use 'L3MON4D3/LuaSnip'
+    use 'saadparwaiz1/cmp_luasnip'
 
     -- Treesitter 
     use {

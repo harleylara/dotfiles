@@ -1,1 +1,3 @@
 - [ ] automate the process of removing files before stowing
+- [x] Add pyright lsp
+- [x] Add Lua lsp
