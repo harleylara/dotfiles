@@ -43,6 +43,7 @@ nvim_lsp.pyright.setup(config())
 local sumneko_binary = "/home/harley/tooling/sumneko/bin/lua-language-server"
 nvim_lsp.sumneko_lua.setup(config({
     cmd = { sumneko_binary },
+    single_file_support = { true },
     settings = {
     Lua = {
       runtime = {
