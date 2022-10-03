@@ -27,6 +27,8 @@ packer.startup(function(use)
     use 'hrsh7th/cmp-buffer'
     -- nvim-cmp source for path
     use 'hrsh7th/cmp-path'
+    -- nvim-cmp source for vim's cmdline
+    use 'hrsh7th/cmp-cmdline'
     -- Autocompletion
     use 'hrsh7th/nvim-cmp'
 
