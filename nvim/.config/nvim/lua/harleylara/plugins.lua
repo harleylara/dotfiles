@@ -55,5 +55,11 @@ packer.startup(function(use)
     }
     -- File broser extension
     use { "nvim-telescope/telescope-file-browser.nvim" }
+   
+    -- Magit for neovim
+    use {
+        'TimUntersberger/neogit',
+        requires = 'nvim-lua/plenary.nvim'
+    }
 
 end)
