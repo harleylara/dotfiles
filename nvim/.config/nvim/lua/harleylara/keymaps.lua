@@ -29,7 +29,7 @@ localModule.search_dotfiles = function()
     -- TODO: can specific directories be ignored. e.g. .git
 	telescope.find_files({
 		prompt_title = "My Dotfiles",
-		cwd = vim.env.DOTFILES,
+		cwd = '~/dotfiles',
 		hidden = true,
 	})
 end
