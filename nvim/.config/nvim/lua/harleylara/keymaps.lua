@@ -22,6 +22,10 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- easy replace
 keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
+-- Personal tools
+-- cht.sh
+keymap.set("n", "<C-h>", ":silent !tmux split-window -h bash -c cht.sh<CR>")
+
 -- Telescope kemaps
 
 local localModule = {}
