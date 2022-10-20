@@ -28,10 +28,11 @@ ts.setup {
         'lua',
         'json',
         'css',
+        'html',
         'python',
         'javascript',
     },
     autotag = {
         enable = true,
-    },
+    }
 } 
