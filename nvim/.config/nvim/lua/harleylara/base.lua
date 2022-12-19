@@ -1,4 +1,6 @@
 local opt = vim.opt
+local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
+local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
 
 vim.cmd("autocmd!")
 
@@ -48,3 +50,11 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 opt.formatoptions:append { 'r' }
 
 vim.wo.colorcolumn = '80'
+
+-- Indexing for filetype
+augroup('setIndent', { clear = true })
+autocmd('Filetype', {
+  group = 'setIndent',
+  pattern = { 'xml', 'html', 'xhtml', "yml", "json"},
+  command = 'setlocal shiftwidth=2 tabstop=2'
+})
