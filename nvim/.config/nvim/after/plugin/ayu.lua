@@ -5,4 +5,4 @@ if (not status) then
     return
 end
 
-ayu.colorscheme()
+-- ayu.colorscheme()

@@ -58,3 +58,6 @@ autocmd('Filetype', {
   pattern = { 'xml', 'html', 'xhtml', "yml", "json"},
   command = 'setlocal shiftwidth=2 tabstop=2'
 })
+
+-- term colors
+opt.termguicolors = true

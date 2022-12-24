@@ -1,19 +1,26 @@
 local status, packer = pcall(require, "packer")
 
-if (not status) then
-    print("Packer is not installed")
-    return
-end
+    if (not status) then
+        print("Packer is not installed")
+        return
+    end
 
--- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
+    -- Only required if you have packer configured as `opt`
+    vim.cmd [[packadd packer.nvim]]
 
-packer.startup(function(use)
+    packer.startup(function(use)
+
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
     -- Color scheme
     use 'Shatur/neovim-ayu'
+
+    -- Noirbuddy
+    use {
+        "jesseleite/nvim-noirbuddy",
+        requires = { "tjdevries/colorbuddy.nvim", branch = "dev" }
+    }
 
     -- Status line
     use 'nvim-lualine/lualine.nvim'

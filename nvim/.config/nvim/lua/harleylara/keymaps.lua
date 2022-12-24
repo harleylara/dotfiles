@@ -9,6 +9,9 @@ end
 -- leader key
 vim.g.mapleader = " "
 
+-- open netrw
+keymap.set("n", "<leader>e", vim.cmd.Ex)
+
 -- prevents yank on delete "x"
 -- keymap.set("n", "x", "_x")
 
