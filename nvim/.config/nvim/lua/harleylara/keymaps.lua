@@ -16,7 +16,7 @@ keymap.set("n", "<leader>e", vim.cmd.Ex)
 -- keymap.set("n", "x", "_x")
 
 -- select all
-keymap.set("n", "<C-a>", "gg<S-v>G")
+-- keymap.set("n", "<C-a>", "gg<S-v>G")
 
 -- move selection
 keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
