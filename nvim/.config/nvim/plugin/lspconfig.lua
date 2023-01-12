@@ -17,7 +17,7 @@ on_attach = function(client, bufnr)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
     -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-    -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, bufopts)
     -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
     -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
     -- vim.keymap.set('n', '<space>wl', function()
@@ -61,4 +61,8 @@ nvim_lsp.sumneko_lua.setup {
 nvim_lsp.astro.setup{
     on_attach = on_attach,
     capabilities = capabilities
+}
+
+nvim_lsp.clangd.setup{
+    filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" }
 }
