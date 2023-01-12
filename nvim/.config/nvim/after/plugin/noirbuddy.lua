@@ -5,9 +5,9 @@ if (not status) then
     return
 end
 
-noirbuddy.setup({
-    colors = {
-        primary = '#0078D4',
-        background = '#101010',
-    },
-})
+--noirbuddy.setup({
+--    colors = {
+--        primary = '#0078D4',
+--        background = '#101010',
+--    },
+--})
