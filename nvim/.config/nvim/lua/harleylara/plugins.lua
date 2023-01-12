@@ -25,6 +25,10 @@ local status, packer = pcall(require, "packer")
     -- Status line
     use 'nvim-lualine/lualine.nvim'
 
+    -- Mason
+    use { "williamboman/mason.nvim" }
+    use { "williamboman/mason-lspconfig.nvim" }
+
     -- LSP
     use 'neovim/nvim-lspconfig'
 
@@ -70,5 +74,7 @@ local status, packer = pcall(require, "packer")
     }
 
     use 'ThePrimeagen/harpoon'
+
+    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
 end)
