@@ -55,4 +55,4 @@ catppuccin.setup({
 })
 
 -- setup must be called before loading
-vim.cmd.colorscheme "catppuccin"
+-- has too much caffeine vim.cmd.colorscheme "catppuccin"
