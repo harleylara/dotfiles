@@ -22,6 +22,8 @@ local status, packer = pcall(require, "packer")
         requires = { "tjdevries/colorbuddy.nvim", branch = "dev" }
     }
 
+    use { "catppuccin/nvim", as = "catppuccin" }
+
     -- Status line
     use 'nvim-lualine/lualine.nvim'
 
