@@ -59,5 +59,12 @@ autocmd('Filetype', {
   command = 'setlocal shiftwidth=2 tabstop=2'
 })
 
+-- Set up custom filetypes
+vim.filetype.add {
+    extension = {
+        astro = "astro",
+    },
+}
+
 -- term colors
 opt.termguicolors = true
