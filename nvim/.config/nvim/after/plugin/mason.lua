@@ -12,6 +12,9 @@ mason.setup {
 
 mason_lspconfig.setup {
     ensure_installed = { "html" },
+    -- tailwindcss-language-server
+    -- css-lsp
+    -- html-lsp
     automatic_installation = true,
 }
 
