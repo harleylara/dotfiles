@@ -45,7 +45,7 @@ nvim_lsp.pyright.setup{
 }
 
 local sumneko_binary = "/home/harley/tooling/sumneko/bin/lua-language-server"
-nvim_lsp.sumneko_lua.setup {
+nvim_lsp.lua_ls.setup {
     on_attach = on_attach,
     cmd = { sumneko_binary },
     settings = {
