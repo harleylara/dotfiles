@@ -31,6 +31,7 @@ ts.setup {
         'html',
         'python',
         'javascript',
+        'typescript',
         'astro'
     },
     autotag = {
