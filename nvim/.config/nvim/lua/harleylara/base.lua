@@ -3,6 +3,11 @@ local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
 local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
 
 vim.cmd("autocmd!")
+-- This disable clipboard,
+-- for some reason it take long time to start
+-- and I not using it
+-- https://github.com/neovim/neovim/issues/14280#issuecomment-812854079
+vim.cmd("let g:loaded_clipboard_provider=1")
 
 vim.scriptencoding = 'utf-8'
 opt.encoding = 'utf-8'

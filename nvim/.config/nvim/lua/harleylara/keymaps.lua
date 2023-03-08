@@ -46,6 +46,7 @@ keymap.set('n', '<leader>fd', localModule.search_dotfiles, {})
 keymap.set('n', '<leader>fg', telescope.live_grep, {})
 keymap.set('n', '<c-f>', telescope.current_buffer_fuzzy_find, {})
 keymap.set('n', '<leader>fs', ':Telescope file_browser<CR>')
+keymap.set('n', '<space>rn', vim.lsp.buf.rename, {})
 
 -- Neogit keymaps
 keymap.set('n', '<leader>g', ':Neogit<CR>')
