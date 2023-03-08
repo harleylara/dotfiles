@@ -14,3 +14,18 @@ addToPath /usr/local/go/bin
 
 bind '"\C-f":"\C-k \C-utmux-sessionizer\n"'
 bind '"\C-h":"\C-k \C-ucht.sh\n"'
+
+
+sourceNoetic() {
+    NOETIC=/opt/ros/noetic/setup.bash
+    if [ -f "$NOETIC" ]; then
+        source "$NOETIC"
+        echo "======================"
+        echo "ROS NOETIC enable"
+        echo "======================"
+    else 
+        echo "ROS Noetic is not installed"
+    fi
+}
+
+sourceNoetic
