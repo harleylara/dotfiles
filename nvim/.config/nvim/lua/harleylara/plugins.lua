@@ -11,13 +11,19 @@ local status, packer = pcall(require, "packer")
     packer.startup(function(use)
 
     -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
+    use {
+        'wbthomason/packer.nvim',
+        opt = true
+    }
 
     -- Color scheme
     use 'Shatur/neovim-ayu'
 
     -- Status line
-    use 'nvim-lualine/lualine.nvim'
+    use {
+        'nvim-lualine/lualine.nvim',
+        opt = true
+    }
 
     -- Mason
     use { "williamboman/mason.nvim" }
@@ -54,9 +60,11 @@ local status, packer = pcall(require, "packer")
 
     -- Fuzzy finder
     use {
-      'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    -- or                            , branch = '0.1.x',
-      requires = { {'nvim-lua/plenary.nvim'} }
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.0',
+        -- or                            , branch = '0.1.x',
+        requires = { {'nvim-lua/plenary.nvim'} },
+        opt = true
     }
     -- File broser extension
     use { "nvim-telescope/telescope-file-browser.nvim" }
@@ -64,7 +72,8 @@ local status, packer = pcall(require, "packer")
     -- Magit for neovim
     use {
         'TimUntersberger/neogit',
-        requires = 'nvim-lua/plenary.nvim'
+        requires = 'nvim-lua/plenary.nvim',
+        opt = true
     }
 
     use 'ThePrimeagen/harpoon'
