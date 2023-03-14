@@ -60,15 +60,13 @@ local status, packer = pcall(require, "packer")
 
     -- Fuzzy finder
     use {
-        'nvim-telescope/telescope.nvim',
-        tag = '0.1.0',
-        -- or                            , branch = '0.1.x',
-        requires = { {'nvim-lua/plenary.nvim'} },
-        opt = true
+      'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    -- or                            , branch = '0.1.x',
+      requires = { {'nvim-lua/plenary.nvim'} }
     }
     -- File broser extension
     use { "nvim-telescope/telescope-file-browser.nvim" }
-   
+
     -- Magit for neovim
     use {
         'TimUntersberger/neogit',
