@@ -13,7 +13,6 @@ local status, packer = pcall(require, "packer")
     -- Packer can manage itself
     use {
         'wbthomason/packer.nvim',
-        opt = true
     }
 
     -- Color scheme
@@ -22,7 +21,6 @@ local status, packer = pcall(require, "packer")
     -- Status line
     use {
         'nvim-lualine/lualine.nvim',
-        opt = true
     }
 
     -- Mason
@@ -71,7 +69,6 @@ local status, packer = pcall(require, "packer")
     use {
         'TimUntersberger/neogit',
         requires = 'nvim-lua/plenary.nvim',
-        opt = true
     }
 
     use 'ThePrimeagen/harpoon'
