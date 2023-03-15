@@ -70,6 +70,7 @@ local status, packer = pcall(require, "packer")
         'TimUntersberger/neogit',
         requires = 'nvim-lua/plenary.nvim',
     }
+    use 'https://github.com/tpope/vim-fugitive'
 
     use 'ThePrimeagen/harpoon'
 
