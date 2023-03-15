@@ -49,7 +49,7 @@ keymap.set('n', '<leader>fs', ':Telescope file_browser<CR>')
 keymap.set('n', '<space>rn', vim.lsp.buf.rename, {})
 
 -- Neogit keymaps
-keymap.set('n', '<leader>g', ':Neogit<CR>')
+keymap.set('n', '<leader>g', ':Git<CR>')
 
 -- Harpoon keymaps
 keymap.set('n', '<leader>ha', ':lua require("harpoon.mark").add_file()<CR>')
