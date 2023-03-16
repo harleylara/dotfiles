@@ -54,7 +54,7 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 -- Add asterisks in block comments
 opt.formatoptions:append { 'r' }
 
-vim.wo.colorcolumn = '80'
+opt.colorcolumn = '80'
 
 -- Indexing for filetype
 augroup('setIndent', { clear = true })
