@@ -76,4 +76,8 @@ local status, packer = pcall(require, "packer")
 
     use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
+    use({
+        'projekt0n/github-nvim-theme', tag = 'v0.0.7',
+    })
+
 end)
