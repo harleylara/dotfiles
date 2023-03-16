@@ -8,6 +8,7 @@ vim.cmd("autocmd!")
 -- and I not using it
 -- https://github.com/neovim/neovim/issues/14280#issuecomment-812854079
 vim.cmd("let g:loaded_clipboard_provider=1")
+vim.g.netrw_banner = 0
 
 vim.scriptencoding = 'utf-8'
 opt.encoding = 'utf-8'
