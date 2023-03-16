@@ -28,4 +28,18 @@ sourceNoetic() {
     fi
 }
 
-sourceNoetic
+sourceFoxy(){
+    FOXY=/opt/ros/foxy/setup.bash
+    if [ -f "$FOXY" ]; then
+        source "$FOXY"
+        echo "======================"
+        echo "ROS FOXY enable"
+        echo "======================"
+    else 
+        echo "ROS Foxy is not installed"
+    fi
+}
+
+# sourceNoetic
+sourceFoxy
+
