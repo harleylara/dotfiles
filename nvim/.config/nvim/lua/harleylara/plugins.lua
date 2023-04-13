@@ -23,6 +23,11 @@ local status, packer = pcall(require, "packer")
         'nvim-lualine/lualine.nvim',
     }
 
+    -- Neodev - plugin development
+    use {
+        'folke/neodev.nvim',
+    }
+
     -- Mason
     use { "williamboman/mason.nvim" }
     use { "williamboman/mason-lspconfig.nvim" }
@@ -80,4 +85,5 @@ local status, packer = pcall(require, "packer")
         'projekt0n/github-nvim-theme', tag = 'v0.0.7',
     })
 
+    use '/mnt/d/git-ws/ros.nvim/'
 end)
