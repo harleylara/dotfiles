@@ -15,6 +15,14 @@ addToPath /usr/local/go/bin
 bind '"\C-f":"\C-k \C-utmux-sessionizer\n"'
 bind '"\C-h":"\C-k \C-ucht.sh\n"'
 
+checkRos() {
+    ROS_INS_DIR=/opt/ros
+    if [ -f "$ROS_INS_DIR" ]; then
+        echo "======================"
+        echo "ROS is not installed"
+        echo "======================"
+    fi
+}
 
 sourceNoetic() {
     NOETIC=/opt/ros/noetic/setup.bash
@@ -23,8 +31,6 @@ sourceNoetic() {
         echo "======================"
         echo "ROS NOETIC enable"
         echo "======================"
-    else 
-        echo "ROS Noetic is not installed"
     fi
 }
 
@@ -35,9 +41,7 @@ sourceFoxy(){
         echo "======================"
         echo "ROS FOXY enable"
         echo "======================"
-    else 
-        echo "ROS Foxy is not installed"
-    fi
+    fi 
 }
 
 # sourceNoetic
