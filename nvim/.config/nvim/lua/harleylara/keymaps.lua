@@ -34,7 +34,7 @@ keymap.set("n", "<C-h>", ":silent !tmux split-window -h bash -c cht.sh<CR>")
 local localModule = {}
 localModule.search_dotfiles = function()
     -- TODO: can specific directories be ignored. e.g. .git
-	telescope.find_files({
+	telescope.git_files({
 		prompt_title = "My Dotfiles",
 		cwd = '~/dotfiles',
 		hidden = true,
