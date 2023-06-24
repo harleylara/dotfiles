@@ -29,6 +29,9 @@ keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Lef
 -- cht.sh
 keymap.set("n", "<C-h>", ":silent !tmux split-window -h bash -c cht.sh<CR>")
 
+-- lua and plugins
+keymap.set("n", "''", ":luafile %<CR>")
+
 -- Telescope kemaps
 
 local localModule = {}
