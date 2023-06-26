@@ -51,11 +51,12 @@ sourceHumble(){
         echo "======================"
         echo "ROS HUMBLE enable"
         echo "======================"
+    fi
 }
 
 # sourceNoetic
-sourceFoxy
-# sourceHumble
+# sourceFoxy
+sourceHumble
 
 # this is for tmuxinator
 export EDITOR=nvim
