@@ -44,6 +44,18 @@ sourceFoxy(){
     fi 
 }
 
+sourceHumble(){
+    HUMBLE=/opt/ros/humble/setup.bash
+    if [ -f "$HUMBLE" ]; then
+        source "$HUMBLE"
+        echo "======================"
+        echo "ROS HUMBLE enable"
+        echo "======================"
+}
+
 # sourceNoetic
 sourceFoxy
+# sourceHumble
 
+# this is for tmuxinator
+export EDITOR=nvim
