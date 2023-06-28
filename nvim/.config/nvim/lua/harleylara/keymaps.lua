@@ -21,6 +21,8 @@ keymap.set("n", "<leader>e", vim.cmd.Ex)
 -- move selection
 keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
 keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
+keymap.set("n", "<C-u>", "<C-u>zz")
+keymap.set("n", "<C-d>", "<C-d>zz")
 
 -- easy replace
 keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
