@@ -70,11 +70,6 @@ local status, packer = pcall(require, "packer")
     -- File broser extension
     use { "nvim-telescope/telescope-file-browser.nvim" }
 
-    -- Magit for neovim
-    use {
-        'TimUntersberger/neogit',
-        requires = 'nvim-lua/plenary.nvim',
-    }
     use 'https://github.com/tpope/vim-fugitive'
 
     use 'ThePrimeagen/harpoon'
@@ -86,4 +81,5 @@ local status, packer = pcall(require, "packer")
     })
 
     use '/mnt/d/git-ws/ros.nvim/'
+
 end)
