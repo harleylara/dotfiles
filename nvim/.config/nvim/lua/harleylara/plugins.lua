@@ -70,7 +70,7 @@ local status, packer = pcall(require, "packer")
     -- File broser extension
     use { "nvim-telescope/telescope-file-browser.nvim" }
 
-    use 'https://github.com/tpope/vim-fugitive'
+    use 'tpope/vim-fugitive'
 
     use 'ThePrimeagen/harpoon'
 
