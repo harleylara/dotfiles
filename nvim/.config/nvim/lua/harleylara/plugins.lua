@@ -1,85 +1,91 @@
-local status, packer = pcall(require, "packer")
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
-    if (not status) then
-        print("Packer is not installed")
-        return
-    end
+local status, lazy = pcall(require, "lazy")
 
-    -- Only required if you have packer configured as `opt`
-    vim.cmd [[packadd packer.nvim]]
+if (not status) then
+    print("Lazy is not installed")
+    return
+end
 
-    packer.startup(function(use)
 
-    -- Packer can manage itself
-    use {
-        'wbthomason/packer.nvim',
-    }
+lazy.setup({
 
     -- Color scheme
-    use 'Shatur/neovim-ayu'
+    'Shatur/neovim-ayu',
 
     -- Status line
-    use {
-        'nvim-lualine/lualine.nvim',
-    }
+    'nvim-lualine/lualine.nvim',
 
     -- Neodev - plugin development
-    use {
-        'folke/neodev.nvim',
-    }
+    'folke/neodev.nvim',
 
-    -- Mason
-    use { "williamboman/mason.nvim" }
-    use { "williamboman/mason-lspconfig.nvim" }
+    -- Plenary
+    "nvim-lua/plenary.nvim",
+
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
 
     -- LSP
-    use 'neovim/nvim-lspconfig'
+    'neovim/nvim-lspconfig',
 
     -- nvim-cmp source for neovim's built-in language server client
-    use 'hrsh7th/cmp-nvim-lsp'
+    'hrsh7th/cmp-nvim-lsp',
     -- nvim-cmp source for buffer words
-    use 'hrsh7th/cmp-buffer'
+    'hrsh7th/cmp-buffer',
     -- nvim-cmp source for path
-    use 'hrsh7th/cmp-path'
+    'hrsh7th/cmp-path',
     -- nvim-cmp source for vim's cmdline
-    use 'hrsh7th/cmp-cmdline'
+    'hrsh7th/cmp-cmdline',
     -- Autocompletion
-    use 'hrsh7th/nvim-cmp'
+    'hrsh7th/nvim-cmp',
 
     -- Snip engine
-    use 'L3MON4D3/LuaSnip'
-    use 'saadparwaiz1/cmp_luasnip'
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip',
 
     -- Treesitter 
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-    }
-    use 'nvim-treesitter/nvim-treesitter-context'
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate"
+    },
+    'nvim-treesitter/nvim-treesitter-context',
 
     -- Autopair and autotag
-    use 'windwp/nvim-autopairs'
-    use 'windwp/nvim-ts-autotag'
+    'windwp/nvim-autopairs',
+    'windwp/nvim-ts-autotag',
 
     -- Fuzzy finder
-    use {
-      'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    {
+      'nvim-telescope/telescope.nvim', version= '0.1.1',
     -- or                            , branch = '0.1.x',
-      requires = { {'nvim-lua/plenary.nvim'} }
-    }
+      depencencies = {'nvim-lua/plenary.nvim'}
+    },
     -- File broser extension
-    use { "nvim-telescope/telescope-file-browser.nvim" }
+    { "nvim-telescope/telescope-file-browser.nvim" },
 
-    use 'tpope/vim-fugitive'
+    'tpope/vim-fugitive',
 
-    use 'ThePrimeagen/harpoon'
+    'ThePrimeagen/harpoon',
 
-    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+    {
+        'projekt0n/github-nvim-theme', version= 'v0.0.7',
+    },
 
-    use({
-        'projekt0n/github-nvim-theme', tag = 'v0.0.7',
-    })
+    {
+        dir = '/mnt/d/git-ws/ros.nvim/',
+    },
 
-    use '/mnt/d/git-ws/ros.nvim/'
+    'dstein64/vim-startuptime'
 
-end)
+})
