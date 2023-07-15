@@ -28,6 +28,7 @@ keymap.set("n", "<C-h>", ":silent !tmux split-window -h bash -c cht.sh<CR>")
 -- lua and plugins
 keymap.set("n", "''", ":luafile %<CR>")
 
+-- cool thing for lsp
 keymap.set("n", "K", vim.lsp.buf.hover)
 
 -- Telescope kemaps
