@@ -1,10 +1,4 @@
 local keymap = vim.keymap
-local status, telescope = pcall(require, "telescope.builtin")
-
-if (not status) then
-    print("Telescope is not installed keymap unset")
-    return
-end
 
 -- leader key
 vim.g.mapleader = " "
@@ -37,24 +31,11 @@ keymap.set("n", "''", ":luafile %<CR>")
 keymap.set("n", "K", vim.lsp.buf.hover)
 
 -- Telescope kemaps
-
-local localModule = {}
-localModule.search_dotfiles = function()
-    -- TODO: can specific directories be ignored. e.g. .git
-	telescope.git_files({
-		prompt_title = "My Dotfiles",
-		cwd = '~/dotfiles',
-		hidden = true,
-	})
-end
-
-keymap.set('n', '<leader>ff', telescope.find_files, {})
-keymap.set('n', '<leader>fd', localModule.search_dotfiles, {})
-keymap.set('n', '<leader>fg', telescope.live_grep, {})
-keymap.set('n', '<c-f>', telescope.current_buffer_fuzzy_find, {})
-keymap.set('n', '<space>hh', telescope.help_tags, {})
-keymap.set('n', '<leader>fs', ':Telescope file_browser<CR>')
-keymap.set('n', '<space>rn', vim.lsp.buf.rename, {})
+keymap.set('n', '<leader>ff', ':lua require("telescope.builtin").find_files()<CR>')
+keymap.set('n', '<leader>fd', ':lua require("telescope.builtin").git_files({prompt_title="My Dotfiles", cwd="~/dotfiles/", hidden=true})<CR>')
+keymap.set('n', '<C-f>', ':lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>')
+keymap.set('n', '<leader>hh', ':lua require("telescope.builtin").help_tags()<CR>')
+keymap.set('n', '<leader>fs', ':lua require("telescope.builtin").file_browser()<CR>')
 
 -- Neogit keymaps
 keymap.set('n', '<leader>g', ':Git<CR>')
