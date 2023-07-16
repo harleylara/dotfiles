@@ -19,6 +19,7 @@ vim.wo.number = true
 -- disable mouse
 
 opt.title = true
+opt.cursorline = true
 opt.autoindent = true
 opt.smartindent = true
 opt.relativenumber = true
@@ -74,3 +75,7 @@ vim.filetype.add {
 
 -- term colors
 opt.termguicolors = true
+opt.winblend = 0
+opt.wildoptions = 'pum'
+opt.pumblend = 5
+opt.background = 'dark'
