@@ -32,7 +32,9 @@ return {
             'python',
             'javascript',
             'typescript',
-            'astro'
+            'astro',
+            'markdown',
+            'markdown_inline'
         },
         autotag = {
             enable = true,
