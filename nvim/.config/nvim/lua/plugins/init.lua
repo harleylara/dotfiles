@@ -11,6 +11,8 @@ return {
         version= 'v0.0.7',
         config = function()
             vim.cmd([[colorscheme github_dark_default]])
+            -- I like the column to be dark
+            vim.cmd([[highlight ColorColumn ctermbg=black guibg=black]])
         end
     },
 
