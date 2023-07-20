@@ -19,3 +19,4 @@ colcon build \
     --packages-select $SELECTED
 
 source $INSTALL_BASE/local_setup.bash
+echo "[colcon-extension]: The workspace has been source."
