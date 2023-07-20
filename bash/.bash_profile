@@ -14,6 +14,7 @@ addToPath /usr/local/go/bin
 
 bind '"\C-f":"\C-k \C-utmux-sessionizer\n"'
 bind '"\C-h":"\C-k \C-ucht.sh\n"'
+bind '"\C-g":"\C-k \C-ucolcon-extension\n"'
 
 checkRos() {
     ROS_INS_DIR=/opt/ros
@@ -55,8 +56,8 @@ sourceHumble(){
 }
 
 # sourceNoetic
-# sourceFoxy
-sourceHumble
+sourceFoxy
+# sourceHumble
 
 # this is for tmuxinator
 export EDITOR=nvim
