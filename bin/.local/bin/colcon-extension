@@ -1,16 +1,17 @@
 #!/bin/bash
 
-SELECTED=$(colcon list -n | fzf -m)
-
-if [[ -z $SELECTED ]]; then
-    exit 0
-fi
-
 CURRENT_DIR=$PWD
 LOG_BASE=$CURRENT_DIR/log
 BASE_PATHS=$CURRENT_DIR/src
 INSTALL_BASE=$CURRENT_DIR/install
 BUILD_BASE=$CURRENT_DIR/build
+
+SELECTED=$(colcon list -n --base-path $BASE_PATHS | fzf -m)
+
+if [[ -z $SELECTED ]]; then
+    exit 0
+fi
+
 
 colcon build \
     --base-paths $BASE_PATHS \
