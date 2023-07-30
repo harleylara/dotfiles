@@ -73,6 +73,11 @@ return {
             capabilities = capabilities
         }
 
+        nvim_lsp.gopls.setup{
+            on_attach = on_attach,
+            capabilities = capabilities
+        }
+
         nvim_lsp.clangd.setup{
             filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" }
         }
