@@ -98,7 +98,7 @@ return {
         }
 
         mason_lspconfig.setup {
-            ensure_installed = { "tsserver", "pyright", "html", "cmake-language-server", "astro", "clangd", "css", "tailwindcss", "gopls"},
+            ensure_installed = { "tsserver", "pyright", "html", "cmake", "astro", "clangd", "cssls", "tailwindcss", "gopls"},
             automatic_installation = true,
         }
 
