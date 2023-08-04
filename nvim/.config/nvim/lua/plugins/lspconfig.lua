@@ -73,6 +73,11 @@ return {
             capabilities = capabilities
         }
 
+        nvim_lsp.gopls.setup{
+            on_attach = on_attach,
+            capabilities = capabilities
+        }
+
         nvim_lsp.clangd.setup{
             filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" }
         }
@@ -93,7 +98,7 @@ return {
         }
 
         mason_lspconfig.setup {
-            ensure_installed = { "tsserver", "pyright", "html", "cmake-language-server", "astro", "clangd", "css", "tailwindcss"},
+            ensure_installed = { "tsserver", "pyright", "html", "cmake", "astro", "clangd", "cssls", "tailwindcss", "gopls"},
             automatic_installation = true,
         }
 
