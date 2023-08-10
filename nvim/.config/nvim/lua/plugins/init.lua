@@ -13,10 +13,13 @@ return {
             vim.cmd([[colorscheme github_dark_default]])
             -- I like the column to be dark
             vim.cmd([[highlight ColorColumn ctermbg=black guibg=black]])
+            vim.cmd([[highlight NonText ctermfg=gray guifg=#545454]])
         end
     },
 
     'tpope/vim-fugitive',
+
+    'iamcco/markdown-preview.nvim',
 
     {
         'ThePrimeagen/harpoon',
