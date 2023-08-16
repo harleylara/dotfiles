@@ -27,9 +27,7 @@ return {
     },
 
 
-    {
-        dir = '/mnt/d/git-ws/ros.nvim/',
-    },
+    'harleylara/ros.nvim/',
 
     {
         'dstein64/vim-startuptime',
