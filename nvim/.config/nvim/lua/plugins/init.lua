@@ -27,7 +27,7 @@ return {
     },
 
 
-    'harleylara/ros.nvim/',
+    'harleylara/ros.nvim',
 
     {
         'dstein64/vim-startuptime',
