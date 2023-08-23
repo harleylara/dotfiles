@@ -26,7 +26,8 @@ keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Lef
 keymap.set("n", "<C-h>", ":silent !tmux split-window -h bash -c cht.sh<CR>")
 
 -- ros
-keymap.set("n", "<leader>ri", ":silent lua require('ros').interface_list()<CR>")
+keymap.set("n", "<leader>ri", ":silent lua require('ros').interface_show()<CR>")
+keymap.set("n", "<leader>rt", ":silent lua require('ros').topic_info()<CR>")
 
 -- lua and plugins
 keymap.set("n", "''", ":luafile %<CR>")
