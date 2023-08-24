@@ -59,11 +59,6 @@ sourceHumble(){
 # sourceNoetic
 sourceFoxy
 # sourceHumble
-export CC=clang
-export CXX=clang++
-export CLANG_BASE="--build-base build_clang --install-base install_clang"
-export BUILD_ARGS="--symlink-install ${CLANG_BASE} --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
-alias cb="colcon build ${BUILD_ARGS}"
 
 # this is for tmuxinator
 export EDITOR=nvim
