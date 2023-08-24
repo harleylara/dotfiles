@@ -6,18 +6,29 @@ BASE_PATHS=$CURRENT_DIR/src
 INSTALL_BASE=$CURRENT_DIR/install
 BUILD_BASE=$CURRENT_DIR/build
 
-SELECTED=$(colcon list -n --base-path $BASE_PATHS | fzf -m)
+PKG_LIST=$(colcon list -n --base-path $BASE_PATHS)
+
+if [[ -n $PKG_LIST ]]; then
+    FULL_LIST="${PKG_LIST}"$'\n'"All"
+fi
+
+SELECTED=$(echo "$FULL_LIST" | fzf -m)
 
 if [[ -z $SELECTED ]]; then
     exit 0
 fi
 
+if [[ "$SELECTED" = "All" ]]; then
+    BUILD_LIST="$PKG_LIST"
+else
+    BUILD_LIST=$SELECTED
+fi
 
 colcon build \
     --base-paths $BASE_PATHS \
     --install-base $INSTALL_BASE \
     --build-base $BUILD_BASE \
-    --packages-select $SELECTED
+    --packages-select $BUILD_LIST
 
 source $INSTALL_BASE/local_setup.bash
 echo "[colcon-extension]: The workspace has been source."
