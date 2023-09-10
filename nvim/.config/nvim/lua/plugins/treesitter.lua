@@ -35,7 +35,8 @@ return {
                 'typescript',
                 'astro',
                 'markdown',
-                'markdown_inline'
+                'markdown_inline',
+                'cmake'
             },
             autotag = {
                 enable = true,
