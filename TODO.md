@@ -1,6 +1,0 @@
-- [ ] automate the process of removing files before stowing
-- [x] Setup pyright https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pyright
-- [x] Setup sumneko_lua http://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#sumneko_lua
-- [x] Setup tsserver https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tsserver
-- [x] Fix cht.sh keybind
-- [ ] Add keybind to call tmux sessionizer inside neovim
