@@ -26,7 +26,6 @@ return {
         event = "InsertEnter"
     },
 
-
     'harleylara/ros.nvim',
 
     {
