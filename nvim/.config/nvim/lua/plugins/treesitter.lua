@@ -36,7 +36,8 @@ return {
                 'astro',
                 'markdown',
                 'markdown_inline',
-                'cmake'
+                'cmake',
+                'xml'
             },
             autotag = {
                 enable = true,
