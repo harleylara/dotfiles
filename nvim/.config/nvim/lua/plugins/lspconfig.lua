@@ -84,6 +84,8 @@ return {
             filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" }
         }
 
+        nvim_lsp.cmake.setup{}
+
 
     end
 }
