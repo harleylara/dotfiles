@@ -20,8 +20,6 @@ vim.wo.number = true
 
 opt.title = true
 opt.cursorline = true
-opt.autoindent = true
-opt.smartindent = true
 opt.relativenumber = true
 opt.hlsearch = true
 opt.backup = false
@@ -34,10 +32,16 @@ opt.shell = 'bash'
 opt.backupskip = { '/tmp/*', '/private/tmp/*' }
 opt.inccommand = 'split'
 opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
+
+-- Tab stuff
+opt.autoindent = true
+opt.smartindent = true
 opt.smarttab = true
 opt.breakindent = true
 opt.shiftwidth = 4
 opt.tabstop = 4
+opt.softtabstop = 4
+
 opt.wrap = false -- No Wrap lines
 opt.backspace = { 'start', 'eol', 'indent' }
 opt.path:append { '**' } -- Finding files - Search down into subfolders
