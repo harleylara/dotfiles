@@ -14,7 +14,7 @@ addToPath /usr/local/go/bin
 
 bind '"\C-f":"\C-k \C-utmux-sessionizer\n"'
 bind '"\C-h":"\C-k \C-ucht.sh\n"'
-bind '"\C-g":"\C-k \C-ucolcon-extension\n"'
+bind '"\C-b":"\C-k \C-ucolcon-build\n"'
 
 checkRos() {
     ROS_INS_DIR=/opt/ros
