@@ -28,21 +28,8 @@ return {
             return
         end
 
-        local date = function() return {os.date('%Y-%m-%d')} end
+        require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/lua/harleylara/luasnippets/"})
 
-        luasnip.add_snippets(nil, {
-            all = {
-                luasnip.snippet({
-                    trig = "date",
-                    namr = "Date",
-                    dscr = "Date in the form of YYYY-MM-DD",
-                },{ luasnip.function_node(date, {}) }),
-
-                luasnip.snippet({
-                    trig = "hi",
-                }, { luasnip.text_node("Hello world") })
-            },
-        })
 
         cmp.setup({
             snippet = {
