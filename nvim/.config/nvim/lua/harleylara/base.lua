@@ -66,9 +66,11 @@ autocmd('Filetype', {
   command = 'setlocal shiftwidth=2 tabstop=2'
 })
 
+
 -- Set up custom filetypes
 vim.filetype.add {
     extension = {
+        tex = "tex", -- Change file `.tex` from `plaintext` to just `tex`
         astro = "astro",
         mdx = "markdown.mdx",
         xacro = "html",
