@@ -24,7 +24,7 @@ return {
         }
 
         mason_lspconfig.setup {
-            ensure_installed = { 
+            ensure_installed = {
                 "tsserver",
                 "pyright",
                 "html",
@@ -34,7 +34,8 @@ return {
                 "cssls",
                 "tailwindcss",
                 "gopls",
-                "lua_ls"
+                "lua_ls",
+                "texlab"
             },
             automatic_installation = true,
         }
@@ -82,6 +83,8 @@ return {
         }
 
         nvim_lsp.cmake.setup{}
+
+        nvim_lsp.texlab.setup{}
 
 
     end
