@@ -8,13 +8,15 @@ return {
     -- Color scheme
     {
         'projekt0n/github-nvim-theme',
-        version= 'v0.0.7',
+        lazy = false, -- make sure we load this during startup if it is your main colorscheme
+        priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
-            vim.cmd([[colorscheme github_dark_default]])
-            -- I like the column to be dark
-            vim.cmd([[highlight ColorColumn ctermbg=black guibg=black]])
-            vim.cmd([[highlight NonText ctermfg=gray guifg=#545454]])
-        end
+            require('github-theme').setup({
+                -- ...
+            })
+
+            vim.cmd('colorscheme github_dark_high_contrast')
+        end,
     },
 
     'tpope/vim-fugitive',
