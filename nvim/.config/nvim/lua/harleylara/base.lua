@@ -74,7 +74,7 @@ autocmd('Filetype', {
 -- Set up custom filetypes
 vim.filetype.add {
     extension = {
-        tex = "tex", -- Change file `.tex` from `plaintext` to just `tex`
+        -- tex = "tex", -- Change file `.tex` from `plaintext` to just `tex`
         astro = "astro",
         mdx = "markdown.mdx",
         xacro = "html",
