@@ -37,7 +37,8 @@ return {
                 'markdown',
                 'markdown_inline',
                 'cmake',
-                'xml'
+                'xml',
+                'latex'
             },
             autotag = {
                 enable = true,
