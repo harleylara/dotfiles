@@ -4,7 +4,7 @@ return {
   ls.snippet(
     {
       trig="python",
-      dscr="Python is cool",
+      dscr="Testing snippets",
     },
     {
       ls.text_node("Hello, world!"),
