@@ -13,7 +13,7 @@ return {
                 -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
                 -- the name of the parser)
                 -- list of language that will be disabled
-                -- disable = {"html"},
+                -- disable = {"latex"},
                 -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
                 -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
                 -- Using this option may slow down your editor, and you may see some duplicate highlights.
@@ -22,7 +22,6 @@ return {
             },
             indent = {
                 enable = true,
-                -- disable = {"python"},
             },
             ensure_installed = {
                 'tsx',
@@ -38,7 +37,6 @@ return {
                 'markdown_inline',
                 'cmake',
                 'xml',
-                'latex'
             },
             autotag = {
                 enable = true,
