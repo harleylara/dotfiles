@@ -44,20 +44,19 @@ return {
         if (not status) then return end
 
         local protocol = require('vim.lsp.protocol')
+        local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
         nvim_lsp.tsserver.setup{
-            on_attach = on_attach,
-            capabilities = capabilities
+            capabilities = lsp_capabilities,
         }
 
         nvim_lsp.pyright.setup{
-            on_attach = on_attach,
-            capabilities = capabilities,
+            capabilities = lsp_capabilities,
         }
 
         local sumneko_binary = "/home/" .. vim.env.USER .. "/tooling/sumneko/bin/lua-language-server"
         nvim_lsp.lua_ls.setup {
-            on_attach = on_attach,
+            capabilities = lsp_capabilities,
             cmd = { sumneko_binary },
             settings = {
                 Lua = {
@@ -70,13 +69,11 @@ return {
         }
 
         nvim_lsp.astro.setup{
-            on_attach = on_attach,
-            capabilities = capabilities
+            capabilities = lsp_capabilities
         }
 
         nvim_lsp.gopls.setup{
-            on_attach = on_attach,
-            capabilities = capabilities
+            capabilities = lsp_capabilities
         }
 
         nvim_lsp.clangd.setup{
