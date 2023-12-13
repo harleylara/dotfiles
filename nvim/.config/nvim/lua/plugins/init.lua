@@ -19,18 +19,10 @@ return {
 
     'tpope/vim-fugitive',
 
-    'iamcco/markdown-preview.nvim',
-
     {
         'ThePrimeagen/harpoon',
         event = "InsertEnter"
     },
 
     'harleylara/ros.nvim',
-
-    {
-        'dstein64/vim-startuptime',
-        -- lazy-load on a command
-        cmd = "StartupTime",
-    }
 }
