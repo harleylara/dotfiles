@@ -55,6 +55,10 @@ return {
             capabilities = lsp_capabilities,
         }
 
+        nvim_lsp.tailwindcss.setup{
+            capabilities = lsp_capabilities
+        }
+
         local sumneko_binary = "/home/" .. vim.env.USER .. "/tooling/sumneko/bin/lua-language-server"
         nvim_lsp.lua_ls.setup {
             capabilities = lsp_capabilities,
