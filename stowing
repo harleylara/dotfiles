@@ -3,7 +3,7 @@
 DIRS=($(find . -mindepth 1 -maxdepth 1 -type d | sed 's/.\///'))
 
 for dir in "${DIRS[@]}"; do
-    if [[ $dir != ".git" ]]; then
+    if [[ $dir != ".git" && $dir != "wayland-sessions" ]]; then
         stow -D $dir 2> /dev/null
         echo "Stowing $dir"
         stow $dir
