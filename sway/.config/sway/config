@@ -26,6 +26,8 @@ include /etc/sway/config-vars.d/*
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg ~/.wallpapers/jupiter.png fill
+
+output eDP-1 mode 2560x1600@240hz scale 1.15
 #
 # Example configuration:
 #
