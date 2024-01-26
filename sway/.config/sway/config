@@ -200,6 +200,13 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# Colors
+set $bg-color #101010
+set $border-color #4f4f4f
+set $white-color #ffffff
+set $black-color #000000
+set $gray-400 #bdbdbd
+
 #
 # Status Bar:
 #
@@ -213,8 +220,11 @@ bar {
 
     colors {
         statusline #ffffff
-        background #101010
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        background $bg-color
+
+        # border background text
+        inactive_workspace $bg-color $bg-color $gray-400
+        focused_workspace $white-color $white-color $black-color
     }
 }
 
@@ -226,5 +236,22 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
 for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
 
 bindsym $mod+Shift+s exec flameshot gui
+
+
+# volume / brightness / media controls
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Personal flavor
+client.focused #333333 $bg-color $white-color $border-color $border-color
+
+gaps outer 15
 
 include /etc/sway/config.d/*
