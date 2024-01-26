@@ -254,4 +254,6 @@ client.focused #333333 $bg-color $white-color $border-color $border-color
 
 gaps outer 15
 
+workspace_layout stacking
+
 include /etc/sway/config.d/*
