@@ -6,6 +6,8 @@ battery_capacity=$(cat "/sys/class/power_supply/BAT0/capacity")
 # Check if battery is discharging
 if [ $battery_status = "Discharging" ]; then
     battery_info="Batt: $battery_capacity%"
+elif [ $battery_status = "Charging" ]; then
+    battery_info="⚡ $battery_capacity%"
 else
     battery_info="$battery_status $battery_capacity%"
 fi
@@ -14,7 +16,7 @@ current_ssid=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d':' -f2)
 
 # Check if the SSID is available
 if [ -n "$current_ssid" ]; then
-    network_info="Network: $current_ssid"
+    network_info=" $current_ssid"
 else
     network_info="Not connected"
 fi
