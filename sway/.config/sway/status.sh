@@ -9,7 +9,7 @@ if [ $battery_status = "Discharging" ]; then
 elif [ $battery_status = "Charging" ]; then
     battery_info="⚡ $battery_capacity%"
 else
-    battery_info="$battery_status $battery_capacity%"
+    battery_info="$battery_status"
 fi
 
 current_ssid=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d':' -f2)
@@ -23,8 +23,8 @@ fi
 
 audio_volume=$(amixer -M get Master |\
     awk '/Mono.+/ {print $6=="[off]" ?\
-    $4" 🔇": \
-    $4" 🔉"}' |\
+    "🔇 "$4: \
+    "🔉 "$4}' |\
     tr -d [])
 
 echo "$audio_volume | $network_info | $battery_info | $date_formatted"
