@@ -1,5 +1,1 @@
-# mkdir and cd
-function mc(){
-    mkdir -p "$@" &&
-    cd $_;
-}
+#!/bin/bash
