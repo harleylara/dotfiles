@@ -35,7 +35,8 @@ return {
                 "tailwindcss",
                 "gopls",
                 "lua_ls",
-                "texlab"
+                "texlab",
+                "lemminx"
             },
             automatic_installation = true,
         }
@@ -89,6 +90,11 @@ return {
         nvim_lsp.cmake.setup{}
 
         nvim_lsp.texlab.setup{}
+
+        nvim_lsp.lemminx.setup{
+            capabilities = lsp_capabilities,
+            filetypes = { "xml", "xsd", "xsl", "xslt", "svg", "urdf", "xacro" }
+        }
 
 
     end

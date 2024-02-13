@@ -77,9 +77,6 @@ vim.filetype.add {
         -- tex = "tex", -- Change file `.tex` from `plaintext` to just `tex`
         astro = "astro",
         mdx = "markdown.mdx",
-        xacro = "html",
-        urdf = "html",
-        xml = "html" -- this is just a work around to get autotag to close xml tags... https://github.com/windwp/nvim-ts-autotag/issues/134
     },
 }
 
