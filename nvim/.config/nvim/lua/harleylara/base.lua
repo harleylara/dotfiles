@@ -77,6 +77,8 @@ vim.filetype.add {
         -- tex = "tex", -- Change file `.tex` from `plaintext` to just `tex`
         astro = "astro",
         mdx = "markdown.mdx",
+        urdf = "urdf",
+        xacro = "urdf"
     },
 }
 
