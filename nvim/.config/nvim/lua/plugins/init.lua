@@ -21,6 +21,4 @@ return {
     'lervag/vimtex',
 
     { "folke/neodev.nvim", opts = {} },
-
-    'harleylara/ros.nvim',
 }

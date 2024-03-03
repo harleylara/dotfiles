@@ -16,8 +16,8 @@ keymap.set("n", "<C-d>", "<C-d>zz")
 keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
 -- ros
-keymap.set("n", "<leader>ri", ":silent lua require('ros').interface_show()<CR>")
-keymap.set("n", "<leader>rt", ":silent lua require('ros').topic_info()<CR>")
+-- keymap.set("n", "<leader>ri", ":silent lua require('ros').interface_show()<CR>")
+-- keymap.set("n", "<leader>rt", ":silent lua require('ros').topic_info()<CR>")
 
 -- lua and plugins
 keymap.set("n", "''", ":luafile %<CR>")
@@ -25,6 +25,3 @@ keymap.set("n", "''", ":luafile %<CR>")
 -- cool thing for lsp
 -- Harley: check for this in the lsp config
 -- keymap.set("n", "K", vim.lsp.buf.hover)
-
--- Neogit keymaps
--- keymap.set('n', '<leader>g', ':Git<CR>')
