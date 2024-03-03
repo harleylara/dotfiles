@@ -1,3 +1,9 @@
+--[[
+-- This file contains keymaps related with neovim itself
+-- for plugins specific keymap I'm check the config function
+-- in each plugin
+--]]
+
 local keymap = vim.keymap
 
 -- open netrw
@@ -14,10 +20,6 @@ keymap.set("n", "<C-d>", "<C-d>zz")
 
 -- easy replace
 keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
-
--- ros
--- keymap.set("n", "<leader>ri", ":silent lua require('ros').interface_show()<CR>")
--- keymap.set("n", "<leader>rt", ":silent lua require('ros').topic_info()<CR>")
 
 -- lua and plugins
 keymap.set("n", "''", ":luafile %<CR>")
