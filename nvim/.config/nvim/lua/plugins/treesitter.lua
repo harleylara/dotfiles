@@ -24,6 +24,9 @@ return {
                 enable = true,
             },
             ensure_installed = {
+                'bash',
+                'c',
+                'cpp',
                 'tsx',
                 'lua',
                 'json',
@@ -38,6 +41,7 @@ return {
                 'cmake',
                 'xml',
             },
+            auto_install = true,
             autotag = {
                 enable = true,
             }
