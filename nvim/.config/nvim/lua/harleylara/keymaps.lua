@@ -1,16 +1,10 @@
 local keymap = vim.keymap
 
--- leader key
-vim.g.mapleader = " "
-
 -- open netrw
 keymap.set("n", "<leader>e", vim.cmd.Ex)
 
 -- prevents yank on delete "x"
 -- keymap.set("n", "x", "_x")
-
--- select all
--- keymap.set("n", "<C-a>", "gg<S-v>G")
 
 -- move selection
 keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
@@ -21,10 +15,6 @@ keymap.set("n", "<C-d>", "<C-d>zz")
 -- easy replace
 keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
--- Personal tools
--- cht.sh
-keymap.set("n", "<C-h>", ":silent !tmux split-window -h bash -c cht.sh<CR>")
-
 -- ros
 keymap.set("n", "<leader>ri", ":silent lua require('ros').interface_show()<CR>")
 keymap.set("n", "<leader>rt", ":silent lua require('ros').topic_info()<CR>")
@@ -33,14 +23,8 @@ keymap.set("n", "<leader>rt", ":silent lua require('ros').topic_info()<CR>")
 keymap.set("n", "''", ":luafile %<CR>")
 
 -- cool thing for lsp
-keymap.set("n", "K", vim.lsp.buf.hover)
-
--- Telescope kemaps
-keymap.set('n', '<leader>ff', ':lua require("telescope.builtin").find_files()<CR>')
-keymap.set('n', '<leader>fd', ':lua require("telescope.builtin").git_files({prompt_title="My Dotfiles", cwd="~/dotfiles/", hidden=true})<CR>')
-keymap.set('n', '<C-f>', ':lua require("telescope.builtin").current_buffer_fuzzy_find()<CR>')
-keymap.set('n', '<leader>hh', ':lua require("telescope.builtin").help_tags()<CR>')
-keymap.set('n', '<leader>fs', ':lua require("telescope.builtin").file_browser()<CR>')
+-- Harley: check for this in the lsp config
+-- keymap.set("n", "K", vim.lsp.buf.hover)
 
 -- Neogit keymaps
 keymap.set('n', '<leader>g', ':Git<CR>')
