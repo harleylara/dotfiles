@@ -1,5 +1,0 @@
-bin/.local/bin/*
-./nvim/.config/nvim/plugin/packer_compiled.lua
-!bin/.local/bin/cht.sh
-!bin/.local/bin/tmux-sessionizer
-!bin/.local/bin/colcon-extension

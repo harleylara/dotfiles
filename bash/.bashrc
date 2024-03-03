@@ -121,6 +121,11 @@ if ! shopt -oq posix; then
 fi
 
 
+# ==============================================
+# Harley Lara
+# ==============================================
+
+
 addToPath() {
     if [[ "$PATH" != *"$1"* ]]; then
         export PATH=$PATH:$1
@@ -131,8 +136,8 @@ addToPath $HOME/.local/bin
 addToPath /usr/local/go/bin
 
 bind '"\C-f":"\C-k \C-utmux-sessionizer\n"'
-bind '"\C-h":"\C-k \C-ucht.sh\n"'
-bind '"\C-b":"\C-k \C-ucolcon-build\n"'
+# bind '"\C-h":"\C-k \C-ucht.sh\n"'
+bind '"\C-h":"\C-k \C-ucolcon-build\n"'
 
 checkRos() {
     ROS_INS_DIR=/opt/ros
