@@ -58,7 +58,6 @@ return {
                 filetypes = { "xml", "xsd", "xsl", "xslt", "svg", "urdf", "xacro" }
             },
 
-            -- TODO: Fix LSP attach to single buffer for Lua files
             lua_ls = {
                 cmd = { "/home/" .. vim.env.USER .. "/tooling/sumneko/bin/lua-language-server" },
                 settings = {
@@ -68,10 +67,10 @@ return {
                             checkThirdParty = false,
                             -- Tells lua_ls where to find all the Lua files that you have loaded
                             -- for your neovim configuration.
-                            -- library = {
-                            --     '${3rd}/luv/library',
-                            --     unpack(vim.api.nvim_get_runtime_file('', true)),
-                            -- },
+                            library = {
+                                '${3rd}/luv/library',
+                                unpack(vim.api.nvim_get_runtime_file('', true)),
+                            },
                             -- If lua_ls is really slow on your computer, you can try this instead:
 
                             -- library = { vim.env.VIMRUNTIME },
@@ -92,6 +91,7 @@ return {
             install_root_dir = os.getenv("HOME") .. "/tooling/mason"
         }
 
+        local ensure_installed = vim.tbl_keys(servers or {})
         require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
         require('mason-lspconfig').setup {
