@@ -18,7 +18,6 @@ return {
         end,
     },
 
-    'tpope/vim-fugitive',
     'lervag/vimtex',
 
     { "folke/neodev.nvim", opts = {} },

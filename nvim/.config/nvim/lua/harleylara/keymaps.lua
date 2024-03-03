@@ -27,4 +27,4 @@ keymap.set("n", "''", ":luafile %<CR>")
 -- keymap.set("n", "K", vim.lsp.buf.hover)
 
 -- Neogit keymaps
-keymap.set('n', '<leader>g', ':Git<CR>')
+-- keymap.set('n', '<leader>g', ':Git<CR>')
