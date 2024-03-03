@@ -21,11 +21,6 @@ return {
     'tpope/vim-fugitive',
     'lervag/vimtex',
 
-    {
-        'ThePrimeagen/harpoon',
-        event = "InsertEnter"
-    },
-
     { "folke/neodev.nvim", opts = {} },
 
     'harleylara/ros.nvim',
