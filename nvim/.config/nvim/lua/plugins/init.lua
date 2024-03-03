@@ -3,7 +3,6 @@ Hey Harley from the future, here is Harley from the past, JUST a reminder:
     This file should only list plugins that do not require configuration,
     or just a minimal configuration
 --]]
-
 return {
     -- Color scheme
     {
@@ -26,6 +25,8 @@ return {
         'ThePrimeagen/harpoon',
         event = "InsertEnter"
     },
+
+    { "folke/neodev.nvim", opts = {} },
 
     'harleylara/ros.nvim',
 }

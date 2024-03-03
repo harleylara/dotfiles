@@ -1,75 +1,73 @@
-local opt = vim.opt
-local augroup = vim.api.nvim_create_augroup   -- Create/get autocommand group
-local autocmd = vim.api.nvim_create_autocmd   -- Create autocommand
+-- leader key
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-vim.cmd("autocmd!")
+vim.opt.number = true
+vim.opt.relativenumber = true
+
+vim.opt.mouse = 'a'
+vim.opt.showmode = false -- the mode is already in the status line
+
+-- vim.opt.clipboard = 'unnamedplus'
 -- This disable clipboard,
 -- for some reason it take long time to start
 -- and I not using it
 -- https://github.com/neovim/neovim/issues/14280#issuecomment-812854079
 vim.cmd("let g:loaded_clipboard_provider=1")
+
+vim.opt.breakindent = true
+vim.opt.undofile = true
+
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣', eol = '↵'}
+
 vim.g.netrw_banner = 0
-
-vim.scriptencoding = 'utf-8'
-opt.encoding = 'utf-8'
-opt.fileencoding = 'utf-8'
-
-vim.wo.number = true
-
--- disable mouse
-
-opt.title = true
-opt.cursorline = true
-opt.relativenumber = true
-opt.hlsearch = true
-opt.backup = false
-opt.showcmd = true
-opt.cmdheight = 1
-opt.laststatus = 2
-opt.expandtab = true
-opt.scrolloff = 8
-opt.shell = 'bash'
-opt.backupskip = { '/tmp/*', '/private/tmp/*' }
-opt.inccommand = 'split'
-opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
+vim.opt.cursorline = true
+vim.opt.scrolloff = 8
+vim.opt.colorcolumn = '80'
+vim.opt.wrap = false -- No Wrap lines
 
 -- Tab stuff
-opt.autoindent = true
-opt.smartindent = true
-opt.smarttab = true
-opt.breakindent = true
-opt.shiftwidth = 4
-opt.tabstop = 4
-opt.softtabstop = 4
+vim.opt.expandtab = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.smarttab = true
+vim.opt.breakindent = true
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
 
-opt.wrap = false -- No Wrap lines
-opt.backspace = { 'start', 'eol', 'indent' }
-opt.path:append { '**' } -- Finding files - Search down into subfolders
-opt.wildignore:append { '*/node_modules/*' }
+-- Set highlight on search, but clear on pressing <Esc> in normal mode
+vim.opt.hlsearch = true
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- Undercurl
-vim.cmd([[let &t_Cs = "\e[4:3m"]])
-vim.cmd([[let &t_Ce = "\e[4:0m"]])
+-- Diagnostic keymaps
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
--- Turn off paste mode when leaving insert
-vim.api.nvim_create_autocmd("InsertLeave", {
-    pattern = '*',
-    command = "set nopaste"
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.highlight.on_yank()`
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
 
--- Add asterisks in block comments
-opt.formatoptions:append { 'r' }
-
-opt.colorcolumn = '80'
-
--- Indexing for filetype
-augroup('setIndent', { clear = true })
-autocmd('Filetype', {
+-- Change indexing for some filetypes
+vim.api.nvim_create_augroup('setIndent', { clear = true })
+vim.api.nvim_create_autocmd('Filetype', {
   group = 'setIndent',
   pattern = { 'xml', 'html', 'xhtml', "yml", "json"},
   command = 'setlocal shiftwidth=2 tabstop=2'
 })
-
 
 -- Set up custom filetypes
 vim.filetype.add {
@@ -81,13 +79,3 @@ vim.filetype.add {
         xacro = "urdf"
     },
 }
-
--- term colors
-opt.termguicolors = true
-opt.winblend = 0
-opt.wildoptions = 'pum'
-opt.pumblend = 5
-opt.background = 'dark'
-
-vim.opt.listchars = {eol = '↵'}
-vim.opt.list = true
