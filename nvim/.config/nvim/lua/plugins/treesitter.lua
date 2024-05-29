@@ -41,10 +41,7 @@ return {
                 'cmake',
                 'xml',
             },
-            auto_install = true,
-            autotag = {
-                enable = true,
-            }
+            auto_install = true
         }
         require('nvim-treesitter.configs').setup(opts)
     end
