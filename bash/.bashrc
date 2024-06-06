@@ -189,3 +189,7 @@ export EDITOR=nvim
 neofetch
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+if [ -f ~/.bitbotsrc ]; then
+    source ~/.bitbotsrc
+fi
