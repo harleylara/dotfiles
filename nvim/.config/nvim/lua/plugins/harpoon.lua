@@ -1,6 +1,5 @@
 return {
     'ThePrimeagen/harpoon',
-    event = "InsertEnter",
     config = function()
         local harpoon_mark = require("harpoon.mark")
         local harpoon_ui = require("harpoon.ui")
