@@ -10,9 +10,46 @@ return {
                 { 'kkharji/sqlite.lua' },
             },
             config = function()
+                local bib = require('zotero.bib')
+                
+                -- patch function to look for the .bib file to write
+                -- in the same directory as the current open buffer
+                local function locate_bib_in_current_dir()
+                    local current_file = vim.api.nvim_buf_get_name(0)
+                    local current_dir = vim.fn.fnamemodify(current_file, ':h')
+
+                    local bib_file = current_dir .. '/references.bib'
+
+                    if vim.fn.filereadable(bib_file) == 1 then
+                        return bib_file
+                    else
+                        return nil
+                    end
+                end
+
                 require("zotero").setup({
                     zotero_db_path = '/mnt/c/Users/Harley Lara/Zotero/zotero.sqlite',
                     better_bibtex_db_path = '/mnt/c/Users/Harley Lara/Zotero/better-bibtex.sqlite',
+                    ft = {
+                        tex = {
+                            insert_key_formatter = function(citekey)
+                                return '\\cite{' .. citekey .. '}'
+                            end,
+                            locate_bib = locate_bib_in_current_dir,
+                        },
+                        plaintex = {
+                            insert_key_formatter = function(citekey)
+                                return '\\cite{' .. citekey .. '}'
+                            end,
+                            locate_bib = locate_bib_in_current_dir,
+                        },
+                        default = {
+                            insert_key_formatter = function(citekey)
+                                return '@' .. citekey
+                            end,
+                            locate_bib = locate_bib_in_current_dir
+                        },
+                    }
                 })
             end
         }
