@@ -31,5 +31,13 @@ return {
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
         ft = { "markdown" },
         build = function() vim.fn["mkdp#util#install"]() end,
+    },
+
+    -- markdown tables
+    {
+        'Kicamon/markdown-table-mode.nvim',
+        config = function()
+            require('markdown-table-mode').setup()
+        end
     }
 }
