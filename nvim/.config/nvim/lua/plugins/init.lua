@@ -5,13 +5,33 @@ Hey Harley from the future, here is Harley from the past, JUST a reminder:
 --]]
 return {
     -- Color scheme
+    -- {
+    --     'projekt0n/github-nvim-theme',
+    --     lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    --     priority = 1000, -- make sure to load this before all the other start plugins
+    --     config = function()
+    --         vim.cmd.colorscheme "github_dark_high_contrast"
+    --     end,
+    -- },
+    --
     {
-        'projekt0n/github-nvim-theme',
-        lazy = false, -- make sure we load this during startup if it is your main colorscheme
-        priority = 1000, -- make sure to load this before all the other start plugins
-        config = function()
-            vim.cmd.colorscheme "github_dark_high_contrast"
-        end,
+        'jesseleite/nvim-noirbuddy',
+        dependencies = {
+            { 'tjdevries/colorbuddy.nvim' }
+        },
+        lazy = false,
+        priority = 1000,
+        opts = {
+            -- All of your `setup(opts)` will go here
+        },
+        config = function ()
+            require('noirbuddy').setup {
+                colors = {
+                    primary = '#79C0FF',
+                    background = "#000000"
+                },
+            }
+        end
     },
 
     -- vimtex
@@ -37,7 +57,11 @@ return {
     {
         'Kicamon/markdown-table-mode.nvim',
         config = function()
-            require('markdown-table-mode').setup()
+            require('markdown-table-mode').setup({
+                filetype = {
+                    '*.md', '*.mdx'
+                }}
+            )
         end
     }
 }
