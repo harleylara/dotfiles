@@ -16,7 +16,7 @@ return {
 
                 -- Harley's note: disabled markdown to use the default
                 -- highlighting wich is way better then TS mardown
-                disable = {"markdown"},
+                disable = {"markdown", "latex"},
                 -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
                 -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
                 -- Using this option may slow down your editor, and you may see some duplicate highlights.
@@ -43,6 +43,7 @@ return {
                 'markdown_inline',
                 'cmake',
                 'xml',
+                'latex',
                 'vim', -- to remove the default parser and fix errors, https://www.reddit.com/r/neovim/comments/zu9fdc/comment/j1jfzz6/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
             },
             auto_install = true
