@@ -1,0 +1,69 @@
+#!/bin/bash
+
+export CC=clang
+export CXX=clang++
+
+show_usage() {
+    echo "Usage: colcon-do <action>"
+    echo "Available actions: build, test, test-result"
+    exit 1
+}
+
+# Ensure an action is provided
+if [[ $# -ne 1 ]]; then
+    show_usage
+fi
+
+ACTION=$1
+BUILD_BASE=build_clang
+INSTALL_BASE=install_clang
+
+select_pkg() {
+    PKG_LIST=$(colcon list -n --base-path $PWD/src)
+
+    if [[ -n $PKG_LIST ]]; then
+        FULL_LIST="${PKG_LIST}"$'\n'"All"
+    fi
+
+    SELECTED=$(echo "$FULL_LIST" | fzf -m)
+
+    if [[ -z $SELECTED ]]; then
+        echo "nothing selected"
+        exit 0
+    fi
+
+    if [[ "$SELECTED" = "All" ]]; then
+        SELECTED_LIST="$PKG_LIST"
+    else
+        SELECTED_LIST=$SELECTED
+    fi
+}
+
+case "$ACTION" in
+    "build")
+        select_pkg
+        colcon build \
+            --symlink-install \
+            --build-base $BUILD_BASE \
+            --install-base $INSTALL_BASE \
+            --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+            --packages-select $SELECTED_LIST
+        ;;
+    "test")
+        select_pkg
+        colcon test \
+            --build-base $BUILD_BASE \
+            --install-base $INSTALL_BASE \
+            --packages-select $SELECTED_LIST
+        ;;
+    "test-result")
+        colcon test-result \
+            --test-result-base $BUILD_BASE \
+            --all \
+            --verbose
+        ;;
+    *)
+        echo "Error: Unknown action '$ACTION'"
+        show_usage
+        ;;
+esac
