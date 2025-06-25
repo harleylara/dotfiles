@@ -65,7 +65,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.api.nvim_create_augroup('setIndent', { clear = true })
 vim.api.nvim_create_autocmd('Filetype', {
   group = 'setIndent',
-  pattern = { 'xml', 'html', 'xhtml', "yml", "json", "css", "javascript", "typescript", "markdown", "mdx", "urdf", "astro"},
+  pattern = { 'xml', 'html', 'xhtml', "yml", "json", "css", "javascript", "typescript", "markdown", "mdx", "urdf", "astro", "lua"},
   command = 'setlocal shiftwidth=2 tabstop=2'
 })
 
@@ -76,6 +76,7 @@ vim.filetype.add {
         astro = "astro",
         mdx = "markdown.mdx",
         urdf = "xml",
-        xacro = "xml"
+        xacro = "xml",
+        sdf = "xml"
     },
 }
