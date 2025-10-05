@@ -22,9 +22,19 @@ return {
 
                     if vim.fn.filereadable(bib_file) == 1 then
                         return bib_file
-                    else
-                        return nil
                     end
+
+                    -- only check the parent directory (no recursion)
+                    local parent_dir = vim.fn.fnamemodify(current_dir, ":h")
+                    if parent_dir ~= current_dir then
+                      local up = parent_dir .. "/references.bib"
+
+                      if vim.fn.filereadable(up) == 1 then
+                        return up
+                      end
+                    end
+
+                    return nil
                 end
 
                 require("zotero").setup({
