@@ -51,7 +51,9 @@ return {
 
             cmake = {},
 
-            texlab = {},
+            texlab = {
+              filetypes = { "tex", "plaintex", "bib", "markdown", "markdown.mdx" }
+            },
 
             lemminx = {
                 filetypes = { "xml", "xsd", "xsl", "xslt", "svg", "urdf", "xacro" }
