@@ -1,11 +1,12 @@
 #!/bin/bash
 
-DIRECTORIES=$(cat ~/.tmux-dirs | tr "\n" " ")
+# eval just to make it work in window path with spaces
+eval "set -- $(tr '\n' ' ' < ~/.tmux-dirs)"
 
 if [[ $# -eq 1 ]]; then
     SELECTED=$1 && [[ "$SELECTED" == '.' ]] && SELECTED="$PWD"
 else
-    SELECTED=$(find $DIRECTORIES -mindepth 1 -maxdepth 1 -type d | fzf)
+    SELECTED=$(find "$@" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | fzf)
 fi
 
 if [[ -z $SELECTED ]]; then
