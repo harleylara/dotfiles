@@ -32,5 +32,27 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Diagnostics
 vim.diagnostic.config({
-  virtual_text = { current_line = true }
+    signs = true,
+})
+
+vim.diagnostic.config({
+  signs = true,
+  underline = true,
+  virtual_text = { current_line = true },
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {
+    "text",
+    "markdown",
+    "gitcommit",
+    "rst",
+    "asciidoc",
+    "tex",
+    "plaintex",
+  },
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.spelllang = { "en_us" }
+  end,
 })

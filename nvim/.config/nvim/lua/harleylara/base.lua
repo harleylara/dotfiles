@@ -32,9 +32,6 @@ opt.smartindent = true
 opt.shiftwidth = 4
 opt.tabstop = 4
 opt.softtabstop = 4
-opt.breakindent = true
-opt.breakindentopt = "shift:2"
-opt.showbreak = "↳ "
 
 opt.list = true
 opt.listchars = { tab = "» ", trail = "·", nbsp = "␣", eol = "↵" }

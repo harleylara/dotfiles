@@ -1,10 +1,11 @@
-return {
-  "nvim-treesitter/nvim-treesitter",
-  event = "InsertEnter",
-  dependencies = {
-    'nvim-treesitter/nvim-treesitter-context',
-  },
-  opts = {
+vim.pack.add({
+  "https://github.com/nvim-treesitter/nvim-treesitter",
+  "https://github.com/nvim-treesitter/nvim-treesitter-context"
+})
+
+local treesitter = require("nvim-treesitter")
+treesitter.setup(
+  {
     highlight = {
       -- `false` will disable the whole extension
       enable = true,
@@ -46,6 +47,5 @@ return {
       'xml',
       'latex',
       -- 'vim', -- to remove the default parser and fix errors, https://www.reddit.com/r/neovim/comments/zu9fdc/comment/j1jfzz6/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
-    },
-  }
-}
+    }}
+)
