@@ -5,7 +5,7 @@ export CXX=clang++
 
 show_usage() {
     echo "Usage: colcon-do <action>"
-    echo "Available actions: build, test, test-result"
+    echo "Available actions: build, test, test-result, clean-pkgs"
     exit 1
 }
 
@@ -61,6 +61,12 @@ case "$ACTION" in
             --test-result-base $BUILD_BASE \
             --all \
             --verbose
+        ;;
+    "clean-pkgs")
+        colcon clean packages --yes \
+            --build-base $BUILD_BASE \
+            --install-base $INSTALL_BASE \
+            --packages-select $SELECTED_LIST
         ;;
     *)
         echo "Error: Unknown action '$ACTION'"
