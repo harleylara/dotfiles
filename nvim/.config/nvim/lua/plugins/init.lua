@@ -7,14 +7,8 @@ require("plugins.markup")
 
 -- Editing
 require("plugins.treesitter")
-
-vim.api.nvim_create_autocmd("InsertEnter", {
-  once = true,
-  callback = function()
-    require("plugins.autopairs")
-    require("plugins.cmp")
-  end,
-})
+require("plugins.autopairs")
+require("plugins.cmp")
 
 -- Language tooling
 require("plugins.lspconfig")
