@@ -1,47 +1,66 @@
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
+
 -- Highlight on yank
-vim.api.nvim_create_autocmd("TextYankPost", {
+autocmd("TextYankPost", {
+  group = augroup("highlight-yank", { clear = true }),
   desc = "Briefly highlight yanked text",
-  group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
-  callback = function() vim.highlight.on_yank({ higroup = "IncSearch", timeout = 120 }) end,
+  callback = function()
+    vim.hl.on_yank({ higroup = "IncSearch", timeout = 120 })
+  end,
 })
 
 -- Restore cursor to last position when reopening a file
-vim.api.nvim_create_autocmd("BufReadPost", {
-  group = vim.api.nvim_create_augroup("restore-cursor", { clear = true }),
+autocmd("BufReadPost", {
+  group = augroup("restore-cursor", { clear = true }),
+  desc = "Restore cursor position",
   callback = function()
     local mark = vim.api.nvim_buf_get_mark(0, '"')
-    local lcount = vim.api.nvim_buf_line_count(0)
-    if mark[1] >= 1 and mark[1] <= lcount then pcall(vim.api.nvim_win_set_cursor, 0, mark) end
+    local line_count = vim.api.nvim_buf_line_count(0)
+
+    if mark[1] >= 1 and mark[1] <= line_count then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
   end,
 })
 
 -- Per-filetype indentation (use FileType event + opt_local, and correct filetype names)
-
-vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("setIndent", { clear = true }),
+autocmd("FileType", {
+  group = augroup("indent-2", { clear = true }),
   pattern = {
-    "xml","html","xhtml","yaml","json","jsonc","css","javascript","typescript",
-    "markdown","markdown.mdx","urdf","astro","lua","cpp",
+    "xml",
+    "html",
+    "xhtml",
+    "yaml",
+    "json",
+    "jsonc",
+    "css",
+    "javascript",
+    "typescript",
+    "markdown",
+    "markdown.mdx",
+    "urdf",
+    "astro",
+    "lua",
+    "cpp",
   },
   callback = function()
-    vim.opt_local.shiftwidth  = 2
-    vim.opt_local.tabstop     = 2
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
     vim.opt_local.softtabstop = 2
   end,
 })
 
 -- Diagnostics
 vim.diagnostic.config({
-    signs = true,
-})
-
-vim.diagnostic.config({
   signs = true,
   underline = true,
   virtual_text = { current_line = true },
 })
 
-vim.api.nvim_create_autocmd("FileType", {
+
+autocmd("FileType", {
+  group = augroup("spell", { clear = true }),
   pattern = {
     "text",
     "markdown",

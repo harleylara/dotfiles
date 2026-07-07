@@ -46,9 +46,6 @@ vim.g.netrw_banner = 0
 
 vim.g.loaded_clipboard_provider = 1
 
--- Clear search with <Esc> in normal mode
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { silent = true, desc = "Clear search highlight" })
-
 -- Set up custom filetypes
 vim.filetype.add {
   extension = {

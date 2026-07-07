@@ -1,95 +1,77 @@
-vim.pack.add({
+local zotero_path = vim.fn.expand("~/git-ws/telescope-zotero.nvim")
+local plugins = {
   "https://github.com/nvim-lua/plenary.nvim",
   "https://github.com/nvim-telescope/telescope.nvim",
-  "/home/harley/git-ws/telescope-zotero.nvim"
-})
-
-local telescope = require("telescope")
-
-telescope.setup{ 
-  defaults = { 
-    file_ignore_patterns = { 
-      "node_modules",
-      ".git"
-    }
-  }
 }
 
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[f]ind [f]ile in the current directory and children'})
-vim.keymap.set('n', '<C-f>', builtin.current_buffer_fuzzy_find, { desc = 'Search into the current buffer'})
-vim.keymap.set('n', '<leader>hh', builtin.help_tags, { desc = '[h]elp [h]elp'})
-
-local find_dotfiles = function()
-  return builtin.find_files({
-    prompt_title = "My Dotfiles",
-    cwd = "~/dotfiles/",
-    hidden = true
-  })
+if vim.uv.fs_stat(zotero_path) then
+  table.insert(plugins, zotero_path)
 end
 
-vim.keymap.set('n', '<leader>fd', find_dotfiles, { desc = '[f]ind files intro my dotfiles directory'})
+vim.pack.add(plugins)
 
+local telescope = require("telescope")
+local builtin = require("telescope.builtin")
 
-local zotero_bib_status, zotero_bib = pcall(require, "zotero.bib")
-if not zotero_bib_status then
-  vim.notify("zotero.bib integration with telescope is not installed", vim.log.levels.WARN)
+telescope.setup({
+  defaults = {
+    file_ignore_patterns = {
+      "node_modules",
+      ".git",
+    },
+  },
+})
+
+vim.keymap.set("n", "fh", builtin.help_tags, {
+  desc = "Find help",
+})
+
+local function locate_bib()
+  local file = vim.api.nvim_buf_get_name(0)
+  local dir = vim.fn.fnamemodify(file, ":h")
+
+  for _, candidate in ipairs({
+    dir .. "/references.bib",
+    vim.fn.fnamemodify(dir, ":h") .. "/references.bib",
+  }) do
+    if vim.fn.filereadable(candidate) == 1 then
+      return candidate
+    end
+  end
+end
+
+local ok, zotero = pcall(require, "zotero")
+if not ok then
   return
 end
 
--- patch function to look for the .bib file to write
--- in the same directory as the current open buffer
-local function locate_bib_in_current_dir()
-  local current_file = vim.api.nvim_buf_get_name(0)
-  local current_dir = vim.fn.fnamemodify(current_file, ':h')
-
-  local bib_file = current_dir .. '/references.bib'
-
-  if vim.fn.filereadable(bib_file) == 1 then
-    return bib_file
-  end
-
-  -- only check the parent directory (no recursion)
-  local parent_dir = vim.fn.fnamemodify(current_dir, ":h")
-  if parent_dir ~= current_dir then
-    local up = parent_dir .. "/references.bib"
-
-    if vim.fn.filereadable(up) == 1 then
-      return up
-    end
-  end
-
-  return nil
-end
-
-local zotero_status, zotero = pcall(require, "zotero")
-if not zotero then
-  vim.notify("zotero integration with telescope is not installed", vim.log.levels.WARN)
-end
-
 zotero.setup({
-  zotero_db_path = '/mnt/c/Users/Harley Lara/Zotero/zotero.sqlite',
-  better_bibtex_db_path = '/mnt/c/Users/Harley Lara/Zotero/better-bibtex.sqlite',
+  zotero_db_path = "/mnt/c/Users/Harley Lara/Zotero/zotero.sqlite",
+  better_bibtex_db_path = "/mnt/c/Users/Harley Lara/Zotero/better-bibtex.sqlite",
   ft = {
     tex = {
       insert_key_formatter = function(citekey)
-        return '\\cite{' .. citekey .. '}'
+        return "\\cite{" .. citekey .. "}"
       end,
-      locate_bib = locate_bib_in_current_dir,
+      locate_bib = locate_bib,
     },
     plaintex = {
       insert_key_formatter = function(citekey)
-        return '\\cite{' .. citekey .. '}'
+        return "\\cite{" .. citekey .. "}"
       end,
-      locate_bib = locate_bib_in_current_dir,
+      locate_bib = locate_bib,
     },
     default = {
       insert_key_formatter = function(citekey)
-        return '@' .. citekey
+        return "@" .. citekey
       end,
-      locate_bib = locate_bib_in_current_dir
+      locate_bib = locate_bib,
     },
-  }
+  },
 })
 
-vim.keymap.set('n', '<leader>fz', telescope.extensions.zotero.zotero)
+vim.keymap.set("n", "fz", function()
+  telescope.extensions.zotero.zotero()
+end, {
+  desc = "Find Zotero citation",
+})

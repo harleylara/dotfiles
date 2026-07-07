@@ -1,51 +1,38 @@
 vim.pack.add({
   "https://github.com/nvim-treesitter/nvim-treesitter",
-  "https://github.com/nvim-treesitter/nvim-treesitter-context"
+  "https://github.com/nvim-treesitter/nvim-treesitter-context",
 })
 
-local treesitter = require("nvim-treesitter")
-treesitter.setup(
-  {
-    highlight = {
-      -- `false` will disable the whole extension
-      enable = true,
-      -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-      -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-      -- the name of the parser)
-      -- list of language that will be disabled
+local parsers = {
+  "astro",
+  "bash",
+  "c",
+  "cmake",
+  "cpp",
+  "css",
+  "html",
+  "javascript",
+  "json",
+  -- "latex", -- I'm using VimTeX to manage it
+  "lua",
+  "markdown",
+  "markdown_inline",
+  "python",
+  "tsx",
+  "typescript",
+  "xml",
+}
 
-      -- Harley's note: disabled markdown to use the default
-      -- highlighting wich is way better then TS mardown
-      -- disable = {"markdown", "latex"}, Harley from the future (2025.10.08): Testing
-      disable = {"latex"},
-      -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-      -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-      -- Using this option may slow down your editor, and you may see some duplicate highlights.
-      -- Instead of true it can also be a list of languages
-      additional_vim_regex_highlighting = false,
-    },
-    indent = {
-      enable = true,
-    },
-    auto_install = true,
-    ensure_installed = {
-      'bash',
-      'c',
-      'cpp',
-      'tsx',
-      'lua',
-      'json',
-      'css',
-      'html',
-      'python',
-      'javascript',
-      'typescript',
-      'astro',
-      'markdown',
-      'markdown_inline',
-      'cmake',
-      'xml',
-      'latex',
-      -- 'vim', -- to remove the default parser and fix errors, https://www.reddit.com/r/neovim/comments/zu9fdc/comment/j1jfzz6/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
-    }}
-)
+require("nvim-treesitter").install(parsers)
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("treesitter", { clear = true }),
+  callback = function(ev)
+    local ft = vim.bo[ev.buf].filetype
+    local lang = vim.treesitter.language.get_lang(ft)
+
+    if pcall(vim.treesitter.start, ev.buf, lang) then
+      vim.bo[ev.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end
+  end,
+})
